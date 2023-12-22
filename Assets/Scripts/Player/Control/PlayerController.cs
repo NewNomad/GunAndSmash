@@ -15,7 +15,10 @@ namespace Game.Control
             Instance();
             stateMachine.RegisterState(new MoveState());
             stateMachine.RegisterState(new FireState());
-            stateMachine.ChangeState(StateID.Move);
+            stateMachine.RegisterState(new IdleState());
+
+            // 初期State
+            stateMachine.ChangeState(StateID.Idle);
         }
 
         private void Instance()
@@ -26,6 +29,11 @@ namespace Game.Control
                 return;
             }
             Destroy(gameObject);
+        }
+
+        private void Update()
+        {
+            stateMachine.Update();
         }
     }
 }
