@@ -5,6 +5,7 @@ namespace Game.Control
         Idle,
         Move,
         Fire,
+        Stop,
         Dead
     }
 }

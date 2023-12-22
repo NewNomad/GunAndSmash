@@ -37,9 +37,10 @@ namespace Game.Control
 
         private void InitializeStates()
         {
-            stateMachine.RegisterState(new MoveState());
-            stateMachine.RegisterState(new FireState());
-            stateMachine.RegisterState(new IdleState());
+            stateMachine.RegisterState(new MoveState(stateMachine));
+            stateMachine.RegisterState(new FireState(stateMachine));
+            stateMachine.RegisterState(new IdleState(stateMachine));
+            stateMachine.RegisterState(new StopState(stateMachine));
         }
 
         private void InitializeInput()
@@ -80,7 +81,7 @@ namespace Game.Control
 
         private void OnStop()
         {
-            stateMachine.ChangeState(StateID.Idle);
+            stateMachine.ChangeState(StateID.Stop);
         }
 
     }
