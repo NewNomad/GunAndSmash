@@ -6,13 +6,14 @@ namespace Game.Control
 {
     public class PlayerController : MonoBehaviour
     {
-
+        private StateMachine stateMachine = new StateMachine();
         static public PlayerController instance;
 
-        private void OnEnable()
-        {
-        }
 
+        private void Awake()
+        {
+            // stateMachine.RegisterState(new IdleState(this));
+        }
 
 
     }
