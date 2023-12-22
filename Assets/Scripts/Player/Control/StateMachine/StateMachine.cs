@@ -19,7 +19,6 @@ namespace Game.Control
                 currentState?.OnExit();
                 currentState = newState;
                 currentState.OnEnter();
-                Debug.Log("ChangeState: " + stateID);
             }
         }
 

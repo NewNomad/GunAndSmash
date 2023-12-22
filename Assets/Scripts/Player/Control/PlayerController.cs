@@ -43,6 +43,7 @@ namespace Game.Control
             GetComponent<PlayerInputController>().onFireEvent.AddListener(OnFire);
             GetComponent<PlayerInputController>().onMoveEvent.AddListener(OnMove);
             GetComponent<PlayerInputController>().onStop.AddListener(OnStop);
+            print("InitializeInput");
         }
 
         private void OnDisable()
