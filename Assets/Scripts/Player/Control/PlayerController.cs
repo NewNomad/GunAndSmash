@@ -13,9 +13,8 @@ namespace Game.Control
         private void Awake()
         {
             Instance();
-            stateMachine.RegisterState(new MoveState());
-            stateMachine.RegisterState(new FireState());
-            stateMachine.RegisterState(new IdleState());
+            InitializeStates();
+
 
             // 初期State
             stateMachine.ChangeState(StateID.Idle);
@@ -29,6 +28,13 @@ namespace Game.Control
                 return;
             }
             Destroy(gameObject);
+        }
+
+        private void InitializeStates()
+        {
+            stateMachine.RegisterState(new MoveState());
+            stateMachine.RegisterState(new FireState());
+            stateMachine.RegisterState(new IdleState());
         }
 
         private void Update()
