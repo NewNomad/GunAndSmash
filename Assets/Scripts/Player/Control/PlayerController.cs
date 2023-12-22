@@ -12,10 +12,20 @@ namespace Game.Control
 
         private void Awake()
         {
-            // stateMachine.RegisterState(new IdleState(this));
+            Instance();
+            stateMachine.RegisterState(new MoveState());
+            stateMachine.RegisterState(new FireState());
+            stateMachine.ChangeState(StateID.Move);
         }
 
-
+        private void Instance()
+        {
+            if (instance == null)
+            {
+                instance = this;
+                return;
+            }
+            Destroy(gameObject);
+        }
     }
-
 }
