@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Game.Control
 {
     public class FireState : IState
