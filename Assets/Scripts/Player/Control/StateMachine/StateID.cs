@@ -1,7 +1,10 @@
-public enum stateID
+namespace Game.Control
 {
-    Idle,
-    Move,
-    Fire,
-    Dead
+    public enum StateID
+    {
+        Idle,
+        Move,
+        Fire,
+        Dead
+    }
 }

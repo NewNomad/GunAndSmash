@@ -1,18 +1,26 @@
+using System.Collections.Generic;
+
 namespace Game.Control
 {
     public class StateMachine
     {
         private IState currentState;
-        public void ChangeState(IState newState)
+        private Dictionary<StateID, IState> states = new Dictionary<StateID, IState>();
+        public void RegisterState(IState state)
         {
-            if (currentState != null)
-            {
-                currentState.OnExit();
-            }
-
-            currentState = newState;
-            currentState.OnEnter();
+            if (states.ContainsKey(state.stateID)) { return; }
+            states.Add(state.stateID, state);
         }
+        public void ChangeState(StateID stateID)
+        {
+            if (states.TryGetValue(stateID, out IState newState))
+            {
+                currentState?.OnExit();
+                currentState = newState;
+                currentState.OnEnter();
+            }
+        }
+
         public void Update()
         {
             if (currentState != null)
