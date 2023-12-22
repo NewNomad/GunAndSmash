@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Move;
 using UnityEngine;
 
 namespace Game.Control
@@ -8,6 +9,7 @@ namespace Game.Control
     {
         private StateMachine stateMachine = new StateMachine();
         static public PlayerController instance;
+        Mover mover;
 
 
         private void Awake()
@@ -15,6 +17,7 @@ namespace Game.Control
             Instance();
             InitializeInput();
             InitializeStates();
+            InitializeGetComponents();
 
 
             // 初期State
@@ -43,7 +46,11 @@ namespace Game.Control
             GetComponent<PlayerInputController>().onFireEvent.AddListener(OnFire);
             GetComponent<PlayerInputController>().onMoveEvent.AddListener(OnMove);
             GetComponent<PlayerInputController>().onStop.AddListener(OnStop);
-            print("InitializeInput");
+        }
+
+        private void InitializeGetComponents()
+        {
+            mover = GetComponent<Mover>();
         }
 
         private void OnDisable()
@@ -66,6 +73,7 @@ namespace Game.Control
 
         private void OnMove(Vector2 moveDirection)
         {
+            mover.Move(moveDirection);
             stateMachine.ChangeState(StateID.Move);
         }
 
