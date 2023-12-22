@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.Control
 {
@@ -18,6 +19,7 @@ namespace Game.Control
                 currentState?.OnExit();
                 currentState = newState;
                 currentState.OnEnter();
+                Debug.Log("ChangeState: " + stateID);
             }
         }
 

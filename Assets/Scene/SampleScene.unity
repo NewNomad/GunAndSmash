@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 392395216}
   - component: {fileID: 392395218}
   - component: {fileID: 392395217}
+  - component: {fileID: 392395220}
+  - component: {fileID: 392395219}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -302,6 +304,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &392395219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392395213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba6503bfc224364f8631e09cbb938fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &392395220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392395213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc18abd724176d24383ffb86afd84f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableMoveDistance: 0.1
+  maxClickDuration: 0.2
+  onFireEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onMoveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnhancedFireEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnhancedMoveEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onStop:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &461725338
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ namespace Game.Control
         private void Awake()
         {
             Instance();
+            InitializeInput();
             InitializeStates();
 
 
@@ -37,16 +38,18 @@ namespace Game.Control
             stateMachine.RegisterState(new IdleState());
         }
 
-        private void OnDisable()
-        {
-            GetComponent<PlayerInputController>().onFireEvent.RemoveListener(OnFire);
-        }
-
         private void InitializeInput()
         {
             GetComponent<PlayerInputController>().onFireEvent.AddListener(OnFire);
             GetComponent<PlayerInputController>().onMoveEvent.AddListener(OnMove);
             GetComponent<PlayerInputController>().onStop.AddListener(OnStop);
+        }
+
+        private void OnDisable()
+        {
+            GetComponent<PlayerInputController>().onFireEvent.RemoveListener(OnFire);
+            GetComponent<PlayerInputController>().onMoveEvent.RemoveListener(OnMove);
+            GetComponent<PlayerInputController>().onStop.RemoveListener(OnStop);
         }
 
         private void Update()
@@ -56,6 +59,7 @@ namespace Game.Control
 
         private void OnFire()
         {
+            print("OnFire");
             stateMachine.ChangeState(StateID.Fire);
         }
 
