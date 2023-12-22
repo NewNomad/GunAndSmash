@@ -8,17 +8,15 @@ namespace Game.Control
 
     public class PlayerController : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
 
+        static public PlayerController instance;
+
+        private void OnEnable()
+        {
         }
 
-        // Update is called once per frame
-        void Update()
-        {
 
-        }
+
     }
 
 }
