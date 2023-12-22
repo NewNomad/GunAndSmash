@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Game.Control
 {
     public class MoveState : IState
@@ -9,6 +11,8 @@ namespace Game.Control
             this.stateMachine = stateMachine;
         }
 
+        const float changeMoveStateTime = 1f;
+        private float currentChangeMoveStateTime = 0f;
 
 
         public void OnEnter()
@@ -21,6 +25,18 @@ namespace Game.Control
 
         public void OnUpdate()
         {
+            ChangeStateOnTimeSpeed();
+        }
+
+
+
+        void ChangeStateOnTimeSpeed()
+        {
+            currentChangeMoveStateTime += Time.deltaTime;
+            if (currentChangeMoveStateTime > changeMoveStateTime)
+            {
+                stateMachine.ChangeState(StateID.Idle);
+            }
         }
     }
 }
