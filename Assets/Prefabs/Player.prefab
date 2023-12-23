@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 8174288550494661909}
   - component: {fileID: 6732841932024235035}
   - component: {fileID: 5867918969056917579}
+  - component: {fileID: 280992878401090718}
+  - component: {fileID: 4865524990996155496}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -135,7 +137,7 @@ Rigidbody2D:
   m_Mass: 0.7853982
   m_LinearDrag: 0
   m_AngularDrag: 1
-  m_GravityScale: 1.3
+  m_GravityScale: 1.8
   m_Material: {fileID: 6200000, guid: 4285222263268b8429f8d7803c68a6d3, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -236,3 +238,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
+--- !u!114 &280992878401090718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937431891679069787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5891360849e8964468d5476f92c296a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4865524990996155496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937431891679069787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6e6bea0ba65424493a2e68cca208c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 0}
+  getEnemiesDistance: 10

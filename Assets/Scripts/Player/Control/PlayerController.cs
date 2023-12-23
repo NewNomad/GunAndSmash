@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Game.Combat;
 using Game.Move;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Game.Control
         static public PlayerController instance;
         Mover mover;
         Stop stop;
+        Fire fire;
 
         private void Awake()
         {
@@ -38,7 +40,7 @@ namespace Game.Control
         private void InitializeStates()
         {
             stateMachine.RegisterState(new MoveState(stateMachine));
-            stateMachine.RegisterState(new FireState(stateMachine, mover));
+            stateMachine.RegisterState(new FireState(stateMachine, mover, fire));
             stateMachine.RegisterState(new IdleState(stateMachine));
             stateMachine.RegisterState(new StopState(stateMachine, stop));
         }
@@ -54,6 +56,7 @@ namespace Game.Control
         {
             mover = GetComponent<Mover>();
             stop = GetComponent<Stop>();
+            fire = GetComponent<Fire>();
         }
 
         private void OnDisable()
