@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Control
 {
-    [RequireComponent(typeof(PlayerInputController), typeof(Mover))]
+    [RequireComponent(typeof(PlayerInputController), typeof(Mover), typeof(Stop))]
     public class PlayerController : MonoBehaviour
     {
         private StateMachine stateMachine = new StateMachine();
