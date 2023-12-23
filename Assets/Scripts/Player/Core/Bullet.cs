@@ -36,6 +36,17 @@ namespace Game.Core
             bulletPool.Release(this);
             isRelease = true;
         }
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            damageable?.TakeDamage(damage);
+            DisableThisGameObject();
+        }
+        private void DisableOnEnterCollider(Collider2D other)
+        {
+            // if (other.CompareTag("Player")) return;
+            DisableThisGameObject();
+        }
 
     }
 }
