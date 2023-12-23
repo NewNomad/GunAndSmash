@@ -40,13 +40,8 @@ namespace Game.Core
         {
             IDamageable damageable = other.GetComponent<IDamageable>();
             damageable?.TakeDamage(damage);
+            if (other.CompareTag("Player")) return;
             DisableThisGameObject();
         }
-        private void DisableOnEnterCollider(Collider2D other)
-        {
-            // if (other.CompareTag("Player")) return;
-            DisableThisGameObject();
-        }
-
     }
 }
