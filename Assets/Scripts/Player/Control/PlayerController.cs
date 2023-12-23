@@ -38,7 +38,7 @@ namespace Game.Control
         private void InitializeStates()
         {
             stateMachine.RegisterState(new MoveState(stateMachine));
-            stateMachine.RegisterState(new FireState(stateMachine));
+            stateMachine.RegisterState(new FireState(stateMachine, mover));
             stateMachine.RegisterState(new IdleState(stateMachine));
             stateMachine.RegisterState(new StopState(stateMachine));
         }
