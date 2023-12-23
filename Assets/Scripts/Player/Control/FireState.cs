@@ -7,7 +7,10 @@ namespace Game.Control
     {
         public StateID stateID => StateID.Fire;
         StateMachine stateMachine;
+
+        const float onFireMoveSpeed = 2f;
         Mover mover;
+
 
         public FireState(StateMachine stateMachine, Mover mover)
         {
@@ -17,7 +20,8 @@ namespace Game.Control
         }
         public void OnEnter()
         {
-
+            mover.Move(Vector2.up, onFireMoveSpeed);
+            stateMachine.ChangeState(StateID.Idle);
         }
 
         public void OnExit()

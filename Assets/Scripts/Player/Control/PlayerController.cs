@@ -17,8 +17,8 @@ namespace Game.Control
         {
             Instance();
             InitializeInput();
-            InitializeStates();
             InitializeGetComponents();
+            InitializeStates();
 
 
             // 初期State
