@@ -35,9 +35,6 @@ namespace Game.Control
             ChangeStateOnTimeSpeed();
             MoveOnTouchingWall();
         }
-        // TODO: 壁判定
-        // TODO: 床判定
-
 
         void ChangeStateOnTimeSpeed()
         {
