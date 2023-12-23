@@ -9731,7 +9731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
-  speed: 10
+  speed: 20
   lifeTime: 1
 --- !u!70 &7025677979447358650
 CapsuleCollider2D:
@@ -9762,7 +9762,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.4}
