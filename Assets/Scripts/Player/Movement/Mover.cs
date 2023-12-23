@@ -23,5 +23,10 @@ namespace Game.Move
             rb.velocity = Vector2.zero;
             rb.AddForce(moveDirection * moveSpeed, ForceMode2D.Impulse);
         }
+
+        public bool IsMovingLeft()
+        {
+            return rb.velocity.x < 0;
+        }
     }
 }

@@ -1,3 +1,5 @@
+using Game.Core;
+using Game.Move;
 using UnityEngine;
 
 namespace Game.Control
@@ -6,9 +8,14 @@ namespace Game.Control
     {
         public StateID stateID => StateID.Move;
         StateMachine stateMachine;
-        public MoveState(StateMachine stateMachine)
+        WallCheck wallCheck;
+        Mover mover;
+        const float moveSpeedOnWall = 0.7f;
+        public MoveState(StateMachine stateMachine, WallCheck wallCheck, Mover mover)
         {
             this.stateMachine = stateMachine;
+            this.wallCheck = wallCheck;
+            this.mover = mover;
         }
 
         const float changeMoveStateTime = 1f;
@@ -26,6 +33,7 @@ namespace Game.Control
         public void OnUpdate()
         {
             ChangeStateOnTimeSpeed();
+            MoveOnTouchingWall();
         }
         // TODO: 壁判定
         // TODO: 床判定
@@ -36,7 +44,19 @@ namespace Game.Control
             currentChangeMoveStateTime += Time.deltaTime;
             if (currentChangeMoveStateTime > changeMoveStateTime)
             {
-                stateMachine.ChangeState(StateID.Idle);
+                // stateMachine.ChangeState(StateID.Idle);
+            }
+        }
+
+        void MoveOnTouchingWall()
+        {
+            if (wallCheck.IsTouchingWall())
+            {
+                Debug.Log("MoveOnTouchingWall");
+                Vector2 moveDirection = mover.IsMovingLeft()
+                    ? new Vector2(-moveSpeedOnWall, moveSpeedOnWall)
+                    : new Vector2(moveSpeedOnWall, moveSpeedOnWall);
+                mover.Move(moveDirection);
             }
         }
     }

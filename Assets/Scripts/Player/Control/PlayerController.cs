@@ -42,7 +42,7 @@ namespace Game.Control
 
         private void InitializeStates()
         {
-            stateMachine.RegisterState(new MoveState(stateMachine));
+            stateMachine.RegisterState(new MoveState(stateMachine, wallCheck, mover));
             stateMachine.RegisterState(new FireState(stateMachine, mover, fire));
             stateMachine.RegisterState(new IdleState(stateMachine));
             stateMachine.RegisterState(new StopState(stateMachine, stop));
@@ -60,6 +60,7 @@ namespace Game.Control
             mover = GetComponent<Mover>();
             stop = GetComponent<Stop>();
             fire = GetComponent<Fire>();
+            wallCheck = GetComponent<WallCheck>();
         }
 
         private void OnDisable()

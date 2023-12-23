@@ -29,5 +29,12 @@ namespace Game.Core
                 return hitLeft.collider != null;
             }
         }
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, Vector2.down * groundCheckDistance);
+            Gizmos.DrawRay(transform.position, Vector2.right * wallCheckDistance);
+            Gizmos.DrawRay(transform.position, Vector2.left * wallCheckDistance);
+        }
     }
 }
