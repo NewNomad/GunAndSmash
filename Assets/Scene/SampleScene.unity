@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 559323495}
   - component: {fileID: 559323494}
   - component: {fileID: 559323493}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
