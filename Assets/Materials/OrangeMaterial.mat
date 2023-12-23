@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueMaterial
+  m_Name: OrangeMaterial
   m_Shader: {fileID: -6465566751694194690, guid: 7c213e268a897b14080480b79951dccd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -73,7 +73,7 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 6.4980183, g: 6.4980183, b: 6.4980183, a: 1}
-    - _Emission_Color: {r: 1.4339616, g: 5.2304273, b: 15.999997, a: 0}
+    - _Emission_Color: {r: 18.164818, g: 4.753029, b: 0, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
