@@ -4,7 +4,7 @@ namespace Enemy.Control
     {
         Idle,
         Move,
-        Fire,
+        Fight,
         Dead
     }
 }
