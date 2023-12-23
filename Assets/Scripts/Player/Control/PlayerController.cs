@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Game.Combat;
+using Game.Core;
 using Game.Move;
 using UnityEngine;
 
 namespace Game.Control
 {
     [RequireComponent(typeof(PlayerInputController), typeof(Mover), typeof(Stop))]
+    [RequireComponent(typeof(Fire), typeof(WallCheck))]
     public class PlayerController : MonoBehaviour
     {
         private StateMachine stateMachine = new StateMachine();
@@ -14,6 +16,7 @@ namespace Game.Control
         Mover mover;
         Stop stop;
         Fire fire;
+        WallCheck wallCheck;
 
         private void Awake()
         {
