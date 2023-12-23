@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Game.Core;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -27,5 +28,56 @@ namespace Game.Combat
         }
         private void OnRelease(Bullet bullet) => bullet.gameObject.SetActive(false);
         private void OnRemove(Bullet bullet) => Destroy(bullet.gameObject);
+        public void FireBullet()
+        {
+            GameObject enemy = GetNearestEnemy();
+            if (enemy != null)
+            {
+                Vector2 EnemyDirection = enemy.transform.position - transform.position;
+                FireTo(EnemyDirection);
+            }
+            else
+            {
+                FireTo(new Vector2(0, 1));
+            }
+        }
+
+        private void FireTo(Vector2 direction)
+        {
+            Bullet bullet = bulletPool.Get();
+            bullet.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+            bullet.Launch();
+        }
+
+        private GameObject GetNearestEnemy()
+        {
+            GameObject[] enemies = GetEnemiesInDistance(getEnemiesDistance);
+            GameObject nearestEnemy = null;
+            float nearestDistance = Mathf.Infinity;
+            foreach (GameObject enemy in enemies)
+            {
+                float distance = Vector2.Distance(transform.position, enemy.transform.position);
+                if (distance < nearestDistance)
+                {
+                    nearestDistance = distance;
+                    nearestEnemy = enemy;
+                }
+            }
+            return nearestEnemy;
+        }
+
+        private GameObject[] GetEnemiesInDistance(float distance)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            List<GameObject> enemiesInDistance = new List<GameObject>();
+            foreach (GameObject enemy in enemies)
+            {
+                if (Vector2.Distance(transform.position, enemy.transform.position) <= distance)
+                {
+                    enemiesInDistance.Add(enemy);
+                }
+            }
+            return enemiesInDistance.ToArray();
+        }
     }
 }
