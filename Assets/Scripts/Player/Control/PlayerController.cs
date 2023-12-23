@@ -11,7 +11,7 @@ namespace Game.Control
         private StateMachine stateMachine = new StateMachine();
         static public PlayerController instance;
         Mover mover;
-
+        Stop stop;
 
         private void Awake()
         {
@@ -40,7 +40,7 @@ namespace Game.Control
             stateMachine.RegisterState(new MoveState(stateMachine));
             stateMachine.RegisterState(new FireState(stateMachine, mover));
             stateMachine.RegisterState(new IdleState(stateMachine));
-            stateMachine.RegisterState(new StopState(stateMachine));
+            stateMachine.RegisterState(new StopState(stateMachine, stop));
         }
 
         private void InitializeInput()
@@ -53,6 +53,7 @@ namespace Game.Control
         private void InitializeGetComponents()
         {
             mover = GetComponent<Mover>();
+            stop = GetComponent<Stop>();
         }
 
         private void OnDisable()
