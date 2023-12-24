@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4565105445338355560}
   - component: {fileID: 6259199762415429757}
   - component: {fileID: 1969021290587044155}
+  - component: {fileID: 4261935318135809496}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -166,8 +167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   distanceToPlayer: 5
-  maxChangeStateDuration: 5
-  minChangeStateDuration: 3
+  maxChangeStateDuration: 0
+  minChangeStateDuration: 0
 --- !u!114 &4565105445338355560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +209,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteFlashMaterial: {fileID: 2100000, guid: b3a58443fd481a845a43112671606233, type: 2}
   flashTime: 0.1
+--- !u!114 &4261935318135809496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241902066785523550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b9b59f0b7c2ca419bc11c3307abfaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireInterval: 0.5
+  FireCount: 3
+  BulletInterval: 30
+  BulletCount: 3
+  bulletPrefab: {fileID: -876918792236209408, guid: cd31944301414ab42b28d49050007f91, type: 3}
+  fireType: 0

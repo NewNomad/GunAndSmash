@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections;
 using Enemy.Core;
 using Game.Control;
 using UnityEngine;
@@ -8,10 +8,19 @@ namespace Enemy.Combat
 {
     public class Fire : MonoBehaviour
     {
+        [SerializeField] private float FireInterval = 3;
+        [SerializeField] private int FireCount = 3;
+        [SerializeField] private float BulletInterval = 30;
+        [SerializeField] private int BulletCount = 3;
         [SerializeField] private EnemyBullet bulletPrefab;
-        [SerializeField] private float getEnemiesDistance = 10f;
+        enum FireType
+        {
+            NWay,
+            AllDirection,
+        }
+        [SerializeField] private FireType fireType;
         private IObjectPool<EnemyBullet> bulletPool;
-        readonly int maxBullets = 40;
+        readonly int maxBullets = 300;
         private void Awake()
         {
             bulletPool = new ObjectPool<EnemyBullet>(CreateBullet, OnGet, OnRelease, OnRemove, maxSize: maxBullets);
@@ -29,11 +38,37 @@ namespace Enemy.Combat
         }
         private void OnRelease(EnemyBullet EnemyBullet) => EnemyBullet.gameObject.SetActive(false);
         private void OnRemove(EnemyBullet EnemyBullet) => Destroy(EnemyBullet.gameObject);
-        public void FireBullet()
+        // TODO: リファクタリング1
+        public void FireBulletToPlayer()
         {
+            Debug.Log("FireBulletToPlayer");
             if (PlayerController.instance == null) return;
             Vector2 PlayerDirection = PlayerController.instance.transform.position - transform.position;
+            float FirstAngle = Mathf.Atan2(PlayerDirection.y, PlayerDirection.x) * Mathf.Rad2Deg;
+            switch (fireType)
+            {
+                case FireType.NWay:
+                    FirstAngle = FirstAngle - (BulletInterval * (BulletCount - 1) / 2);
+                    FireBulletsToNWays(FirstAngle, FireCount, BulletInterval);
+                    break;
+                case FireType.AllDirection:
+                    float bulletInterval = 360 / BulletCount;
+                    FireBulletsToNWays(FirstAngle, BulletCount, bulletInterval);
+                    break;
+            }
+
             FireTo(PlayerDirection);
+        }
+
+        private void FireBulletsToNWays(float angle, int number, float BulletInterval)
+        {
+            // TODO: SE
+            for (int i = 0; i < number; i++)
+            {
+                float currentAngle = angle + (BulletInterval * i);
+                // Vector2 direction = new Vector2(Mathf.Cos(currentAngle * Mathf.Deg2Rad), Mathf.Sin(currentAngle * Mathf.Deg2Rad));
+                FireTo(PlayerController.instance.transform.position - transform.position);
+            }
         }
 
         private void FireTo(Vector2 direction)
@@ -41,6 +76,20 @@ namespace Enemy.Combat
             EnemyBullet EnemyBullet = bulletPool.Get();
             EnemyBullet.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
             EnemyBullet.Launch();
+        }
+
+        public void FireBehaviors()
+        {
+            StartCoroutine(FireBullets());
+
+        }
+        IEnumerator FireBullets()
+        {
+            while (true)
+            {
+                FireBulletToPlayer();
+                yield return new WaitForSeconds(FireInterval);
+            }
         }
     }
 }

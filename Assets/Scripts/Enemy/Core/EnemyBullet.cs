@@ -40,7 +40,9 @@ namespace Enemy.Core
         private void OnTriggerEnter2D(Collider2D other)
         {
             // TODO: PlayerのBulletと共通化
+            // TODO: レイヤーで当たり判定を消す
             if (other.CompareTag("Enemy")) return;
+            if (other.CompareTag("bullet")) return;
             IDamageable damageable = other.GetComponent<IDamageable>();
             damageable?.TakeDamage(damage);
             DisableThisGameObject();

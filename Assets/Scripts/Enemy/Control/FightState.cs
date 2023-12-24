@@ -1,4 +1,5 @@
 using Enemy.Combat;
+using UnityEngine;
 
 namespace Enemy.Control
 {
@@ -14,7 +15,7 @@ namespace Enemy.Control
         }
         public void OnEnter()
         {
-            fire.FireBullet();
+            fire.FireBehaviors();
         }
         public void OnExit()
         {
