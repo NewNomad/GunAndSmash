@@ -8,8 +8,7 @@ namespace Enemy.Control
         public StateID stateID => StateID.Move;
         private StateMachine stateMachine;
         Mover mover;
-        readonly float maxChangeStateDuration = 5f;
-        readonly float minChangeStateDuration = 3f;
+
         float changeStateDuration = Mathf.Infinity;
         public MoveState(StateMachine stateMachine, Mover mover)
         {
@@ -18,7 +17,7 @@ namespace Enemy.Control
         }
         public void OnEnter()
         {
-            changeStateDuration = Random.Range(minChangeStateDuration, maxChangeStateDuration);
+            mover.SetChangeStateDuration();
             mover.IsMoveState = true;
         }
         public void OnExit()
@@ -27,8 +26,7 @@ namespace Enemy.Control
         }
         public void OnUpdate()
         {
-            changeStateDuration -= Time.deltaTime;
-            if (changeStateDuration > 0) return;
+            if (!mover.IsChangeStateDurationOver()) return;
             stateMachine.ChangeState(StateID.Fight);
         }
     }

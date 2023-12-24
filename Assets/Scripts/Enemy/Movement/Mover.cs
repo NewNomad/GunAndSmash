@@ -8,6 +8,9 @@ namespace Enemy.Movement
 
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float distanceToPlayer = 1f;
+        [SerializeField] float maxChangeStateDuration = 5f;
+        [SerializeField] float minChangeStateDuration = 3f;
+        float changeStateDuration = Mathf.Infinity;
         bool isMoveState = false;
         public bool IsMoveState { get => isMoveState; set => isMoveState = value; }
         Rigidbody2D rb;
@@ -18,6 +21,7 @@ namespace Enemy.Movement
 
         private void FixedUpdate()
         {
+            changeStateDuration -= Time.fixedDeltaTime;
             MoveToPlayer();
         }
 
@@ -37,6 +41,16 @@ namespace Enemy.Movement
         public bool IsPlayerInRange()
         {
             return Vector2.Distance(transform.position, PlayerController.instance.transform.position) < distanceToPlayer;
+        }
+
+        public void SetChangeStateDuration()
+        {
+            changeStateDuration = Random.Range(minChangeStateDuration, maxChangeStateDuration);
+        }
+
+        public bool IsChangeStateDurationOver()
+        {
+            return changeStateDuration <= 0;
         }
     }
 }
