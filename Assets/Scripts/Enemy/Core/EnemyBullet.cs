@@ -47,6 +47,9 @@ namespace Enemy.Core
             damageable?.TakeDamage(damage);
             DisableThisGameObject();
         }
+
+        // 画面外に出たら消す
+        // private void OnBecameInvisible() => DisableThisGameObject();
     }
 
 }

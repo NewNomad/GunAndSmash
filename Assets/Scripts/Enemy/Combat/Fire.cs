@@ -49,7 +49,7 @@ namespace Enemy.Combat
             {
                 case FireType.NWay:
                     FirstAngle = FirstAngle - (BulletInterval * (BulletCount - 1) / 2);
-                    FireBulletsToNWays(FirstAngle, FireCount, BulletInterval);
+                    FireBulletsToNWays(FirstAngle, BulletCount, BulletInterval);
                     break;
                 case FireType.AllDirection:
                     float bulletInterval = 360 / BulletCount;
@@ -66,8 +66,8 @@ namespace Enemy.Combat
             for (int i = 0; i < number; i++)
             {
                 float currentAngle = angle + (BulletInterval * i);
-                // Vector2 direction = new Vector2(Mathf.Cos(currentAngle * Mathf.Deg2Rad), Mathf.Sin(currentAngle * Mathf.Deg2Rad));
-                FireTo(PlayerController.instance.transform.position - transform.position);
+                Vector2 direction = new Vector2(Mathf.Cos(currentAngle * Mathf.Deg2Rad), Mathf.Sin(currentAngle * Mathf.Deg2Rad));
+                FireTo(direction);
             }
         }
 
