@@ -53,14 +53,15 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnClickCanceled(InputAction.CallbackContext context)
     {
-        if (clickDuration < maxClickDuration)
-        {
-            handleClickDurationLessThanMax();
-        }
-        else
-        {
-            handleClickDurationMoreThanMax();
-        }
+        // FIXME: 実装時間がないため一次的に長押し系は無効化
+        // if (clickDuration < maxClickDuration)
+        // {
+        handleClickDurationLessThanMax();
+        // }
+        // else
+        // {
+        //     handleClickDurationMoreThanMax();
+        // }
         clickDuration = -1f;
     }
 
