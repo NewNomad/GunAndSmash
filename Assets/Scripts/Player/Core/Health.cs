@@ -43,7 +43,7 @@ namespace Game.Core
         // 無敵時の点滅
         private IEnumerator InvincibleBlink()
         {
-            const float blinkColorValue = 0.5f;
+            const float blinkColorValue = 0.1f;
             Color defaultColor = spriteRenderer.color;
             Color blinkColor = new Color(defaultColor.r * blinkColorValue, defaultColor.g * blinkColorValue, defaultColor.b * blinkColorValue);
 
