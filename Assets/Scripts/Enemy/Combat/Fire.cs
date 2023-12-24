@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Enemy.Core;
+using Game.Control;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -30,16 +31,9 @@ namespace Enemy.Combat
         private void OnRemove(EnemyBullet EnemyBullet) => Destroy(EnemyBullet.gameObject);
         public void FireBullet()
         {
-            GameObject enemy = GetNearestEnemy();
-            if (enemy != null)
-            {
-                Vector2 EnemyDirection = enemy.transform.position - transform.position;
-                FireTo(EnemyDirection);
-            }
-            else
-            {
-                FireTo(new Vector2(0, 1));
-            }
+            if (PlayerController.instance == null) return;
+            Vector2 PlayerDirection = PlayerController.instance.transform.position - transform.position;
+            FireTo(PlayerDirection);
         }
 
         private void FireTo(Vector2 direction)
@@ -47,37 +41,6 @@ namespace Enemy.Combat
             EnemyBullet EnemyBullet = bulletPool.Get();
             EnemyBullet.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
             EnemyBullet.Launch();
-        }
-
-        private GameObject GetNearestEnemy()
-        {
-            GameObject[] enemies = GetEnemiesInDistance(getEnemiesDistance);
-            GameObject nearestEnemy = null;
-            float nearestDistance = Mathf.Infinity;
-            foreach (GameObject enemy in enemies)
-            {
-                float distance = Vector2.Distance(transform.position, enemy.transform.position);
-                if (distance < nearestDistance)
-                {
-                    nearestDistance = distance;
-                    nearestEnemy = enemy;
-                }
-            }
-            return nearestEnemy;
-        }
-
-        private GameObject[] GetEnemiesInDistance(float distance)
-        {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            List<GameObject> enemiesInDistance = new List<GameObject>();
-            foreach (GameObject enemy in enemies)
-            {
-                if (Vector2.Distance(transform.position, enemy.transform.position) <= distance)
-                {
-                    enemiesInDistance.Add(enemy);
-                }
-            }
-            return enemiesInDistance.ToArray();
         }
     }
 }
