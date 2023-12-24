@@ -14,6 +14,7 @@ namespace Enemy.Control
         }
         public void OnEnter()
         {
+            fire.FireBullet();
         }
         public void OnExit()
         {

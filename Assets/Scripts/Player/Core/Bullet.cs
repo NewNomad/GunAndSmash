@@ -38,10 +38,10 @@ namespace Game.Core
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
-            IDamageable damageable = other.GetComponent<IDamageable>();
-            damageable?.TakeDamage(damage);
             // TODO: 直す
             if (other.CompareTag("Player")) return;
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            damageable?.TakeDamage(damage);
             DisableThisGameObject();
         }
     }

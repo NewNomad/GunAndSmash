@@ -39,10 +39,10 @@ namespace Enemy.Core
         }
         private void OnTriggerEnter2D(Collider2D other)
         {
-            IDamageable damageable = other.GetComponent<IDamageable>();
-            damageable?.TakeDamage(damage);
             // TODO: PlayerのBulletと共通化
             if (other.CompareTag("Enemy")) return;
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            damageable?.TakeDamage(damage);
             DisableThisGameObject();
         }
     }
