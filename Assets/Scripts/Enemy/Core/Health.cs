@@ -26,6 +26,7 @@ namespace Enemy.Core
             {
                 Debug.Log("Enemy is dead");
                 Instantiate(stunParticles, transform.position, Quaternion.identity);
+                HitStopController.Instance.HitStop();
                 // TODO: DIE()
             }
         }
