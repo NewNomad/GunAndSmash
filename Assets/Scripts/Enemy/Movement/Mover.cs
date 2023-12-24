@@ -33,6 +33,8 @@ namespace Enemy.Movement
 
         private void MoveToPlayer()
         {
+            if (PlayerController.instance == null) return;
+
             if (!IsMoveState) return;
             if (IsPlayerInRange()) return;
             MoveTo(PlayerController.instance.transform.position);
