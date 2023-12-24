@@ -1,3 +1,4 @@
+using Game.Control;
 using UnityEngine;
 namespace Enemy.Control
 {
@@ -5,6 +6,7 @@ namespace Enemy.Control
     {
 
         private StateMachine stateMachine = new StateMachine();
+        PlayerController playerController;
         private void Awake()
         {
             InitializeGetComponents();
@@ -13,6 +15,7 @@ namespace Enemy.Control
 
         private void InitializeGetComponents()
         {
+            playerController = FindObjectOfType<PlayerController>();
         }
 
         private void InitializeStates()
