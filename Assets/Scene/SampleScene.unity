@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stunTime: 7
-  stunBlinkTime: 0.3
+  stunBlinkTime: 0.25
 --- !u!4 &392395215 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4812827781962464487, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
