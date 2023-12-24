@@ -29,7 +29,7 @@ namespace Enemy.Core
             health -= damage;
             stunHealth -= damage;
             SetEnemyFlash();
-            if (stunHealth <= 0)
+            if (stunHealth <= 0 && canHealStun)
             {
                 canHealStun = false;
                 onStunned.Invoke();
