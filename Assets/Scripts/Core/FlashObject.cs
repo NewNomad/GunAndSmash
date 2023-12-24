@@ -34,10 +34,7 @@ public class FlashObject : MonoBehaviour
 
     public void GetEnemyFlashTime(float hpPercentage)
     {
-        float r = defaultColor.r + ((1f - hpPercentage) * (Color.white.b - defaultColor.r));
-        float g = defaultColor.g + ((1f - hpPercentage) * (Color.white.b - defaultColor.g));
-        float b = defaultColor.b + ((1f - hpPercentage) * (Color.white.b - defaultColor.b));
-        Color color = new Color(r, g, b);
+        Color color = ColorOnPercent(hpPercentage);
         StartCoroutine(EnemyFlashCoroutine(color));
     }
 
@@ -50,4 +47,16 @@ public class FlashObject : MonoBehaviour
         spriteRenderer.material = defaultMaterial;
     }
 
+    private Color ColorOnPercent(float percentage)
+    {
+        float r = defaultColor.r + ((1f - percentage) * (Color.white.b - defaultColor.r));
+        float g = defaultColor.g + ((1f - percentage) * (Color.white.b - defaultColor.g));
+        float b = defaultColor.b + ((1f - percentage) * (Color.white.b - defaultColor.b));
+        return new Color(r, g, b);
+    }
+
+    public void ChangeColorOnPercent(float percentage)
+    {
+        spriteRenderer.color = ColorOnPercent(percentage);
+    }
 }

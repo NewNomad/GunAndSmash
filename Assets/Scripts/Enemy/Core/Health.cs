@@ -6,9 +6,9 @@ namespace Enemy.Core
     [RequireComponent(typeof(FlashObject))]
     public class Health : MonoBehaviour, IDamageable
     {
-        [SerializeField] private int maxHealth = 280;
+        [SerializeField] private int maxHealth = 580;
         private int health;
-        [SerializeField] private int stunMaxHealth = 180;
+        [SerializeField] private int stunMaxHealth = 280;
         private int stunHealth;
         FlashObject flashObject;
         [SerializeField] ParticleSystem stunParticles;
@@ -37,8 +37,10 @@ namespace Enemy.Core
 
         private void FixedUpdate()
         {
+            Debug.Log("stunHealth: " + stunHealth);
             stunHealth += 1;
             stunHealth = Mathf.Clamp(stunHealth, 0, stunMaxHealth);
+            flashObject.ChangeColorOnPercent(GetHealthPercentage());
         }
 
 
@@ -50,7 +52,7 @@ namespace Enemy.Core
 
         private float GetHealthPercentage()
         {
-            return (float)health / (float)maxHealth;
+            return (float)stunHealth / (float)stunMaxHealth;
         }
     }
 }
