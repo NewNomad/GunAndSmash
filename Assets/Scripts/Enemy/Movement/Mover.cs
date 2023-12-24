@@ -8,8 +8,8 @@ namespace Enemy.Movement
 
         [SerializeField] private float moveSpeed = 5f;
         [SerializeField] private float distanceToPlayer = 1f;
-
-        PlayerController playerController;
+        bool isMoveState = false;
+        public bool IsMoveState { get => isMoveState; set => isMoveState = value; }
         Rigidbody2D rb;
         private void Awake()
         {
@@ -29,13 +29,14 @@ namespace Enemy.Movement
 
         private void MoveToPlayer()
         {
-            Debug.Log(playerController);
+            if (!IsMoveState) return;
+            if (IsPlayerInRange()) return;
             MoveTo(PlayerController.instance.transform.position);
         }
 
         public bool IsPlayerInRange()
         {
-            return Vector2.Distance(transform.position, playerController.transform.position) < distanceToPlayer;
+            return Vector2.Distance(transform.position, PlayerController.instance.transform.position) < distanceToPlayer;
         }
     }
 }
