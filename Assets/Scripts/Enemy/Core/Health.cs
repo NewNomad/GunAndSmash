@@ -64,5 +64,10 @@ namespace Enemy.Core
         {
             return (float)stunHealth / (float)stunMaxHealth;
         }
+
+        public void SetStunFull()
+        {
+            stunHealth = stunMaxHealth;
+        }
     }
 }
