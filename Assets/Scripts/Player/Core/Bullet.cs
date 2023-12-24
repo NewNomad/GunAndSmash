@@ -40,6 +40,7 @@ namespace Game.Core
         {
             IDamageable damageable = other.GetComponent<IDamageable>();
             damageable?.TakeDamage(damage);
+            // TODO: 直す
             if (other.CompareTag("Player")) return;
             DisableThisGameObject();
         }

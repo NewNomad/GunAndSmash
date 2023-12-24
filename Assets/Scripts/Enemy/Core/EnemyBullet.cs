@@ -41,7 +41,8 @@ namespace Enemy.Core
         {
             IDamageable damageable = other.GetComponent<IDamageable>();
             damageable?.TakeDamage(damage);
-            if (other.CompareTag("Player")) return;
+            // TODO: PlayerのBulletと共通化
+            if (other.CompareTag("Enemy")) return;
             DisableThisGameObject();
         }
     }
