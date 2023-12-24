@@ -22,7 +22,7 @@ namespace Enemy.Control
         }
         public void OnUpdate()
         {
+            if (!fire.IsFireState) stateMachine.ChangeState(StateID.Move);
         }
-
     }
 }

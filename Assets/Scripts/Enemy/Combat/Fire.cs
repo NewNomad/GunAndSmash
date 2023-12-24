@@ -21,6 +21,9 @@ namespace Enemy.Combat
         [SerializeField] private FireType fireType;
         private IObjectPool<EnemyBullet> bulletPool;
         readonly int maxBullets = 300;
+        bool isFireState = false;
+        public bool IsFireState { get => isFireState; }
+
         private void Awake()
         {
             bulletPool = new ObjectPool<EnemyBullet>(CreateBullet, OnGet, OnRelease, OnRemove, maxSize: maxBullets);
@@ -62,7 +65,6 @@ namespace Enemy.Combat
 
         private void FireBulletsToNWays(float angle, int number, float BulletInterval)
         {
-            // TODO: SE
             for (int i = 0; i < number; i++)
             {
                 float currentAngle = angle + (BulletInterval * i);
@@ -80,16 +82,22 @@ namespace Enemy.Combat
 
         public void FireBehaviors()
         {
+            // TODO: SE
             StartCoroutine(FireBullets());
-
         }
         IEnumerator FireBullets()
         {
-            while (true)
+            isFireState = true;
+            // クールダウンタイマー
+            const float waitTime = 0.5f;
+            yield return new WaitForSeconds(waitTime);
+            for (int i = 0; i < FireCount; i++)
             {
                 FireBulletToPlayer();
                 yield return new WaitForSeconds(FireInterval);
             }
+            yield return new WaitForSeconds(waitTime);
+            isFireState = false;
         }
     }
 }
