@@ -1,8 +1,10 @@
+using Game.Core;
 using UnityEngine;
 
 namespace Enemy.Core
 {
-    public class Health : MonoBehaviour
+    [RequireComponent(typeof(FlashObject))]
+    public class Health : MonoBehaviour, IDamageable
     {
         [SerializeField] private int maxHealth = 280;
         private int health;
@@ -18,6 +20,7 @@ namespace Enemy.Core
         public void TakeDamage(int damage)
         {
             health -= damage;
+            Debug.Log("Enemy health: " + health);
             SetEnemyFlash();
             if (health <= 0)
             {
