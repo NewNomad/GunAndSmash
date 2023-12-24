@@ -1,3 +1,4 @@
+using Enemy.Combat;
 using Enemy.Movement;
 using Game.Control;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Enemy.Control
         private StateMachine stateMachine = new StateMachine();
         PlayerController playerController;
         Mover mover;
+        Fire fire;
         private void Awake()
         {
             InitializeGetComponents();
@@ -21,12 +23,13 @@ namespace Enemy.Control
         {
             playerController = FindObjectOfType<PlayerController>();
             mover = GetComponent<Mover>();
+            fire = GetComponent<Fire>();
         }
 
         private void InitializeStates()
         {
             stateMachine.RegisterState(new MoveState(stateMachine, mover));
-            stateMachine.RegisterState(new FightState(stateMachine));
+            stateMachine.RegisterState(new FightState(stateMachine, fire));
         }
         private void Update()
         {
