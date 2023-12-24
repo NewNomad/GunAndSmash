@@ -22,7 +22,7 @@ namespace Enemy.Combat
         private IObjectPool<EnemyBullet> bulletPool;
         readonly int maxBullets = 300;
         bool isFireState = false;
-        public bool IsFireState { get => isFireState; }
+        public bool IsFireState { get => isFireState; set => isFireState = value; }
 
         private void Awake()
         {
@@ -93,6 +93,7 @@ namespace Enemy.Combat
             yield return new WaitForSeconds(waitTime);
             for (int i = 0; i < FireCount; i++)
             {
+                if (isFireState == false) yield break;
                 FireBulletToPlayer();
                 yield return new WaitForSeconds(FireInterval);
             }

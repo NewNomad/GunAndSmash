@@ -1,5 +1,6 @@
 using Game.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Enemy.Core
 {
@@ -12,6 +13,10 @@ namespace Enemy.Core
         private int stunHealth;
         FlashObject flashObject;
         [SerializeField] ParticleSystem stunParticles;
+        public UnityEvent onStunned;
+        private bool canHealStun = true;
+        public bool CanHealStun { get => canHealStun; set => canHealStun = value; }
+
 
         private void Awake()
         {
@@ -27,20 +32,25 @@ namespace Enemy.Core
             SetEnemyFlash();
             if (stunHealth <= 0)
             {
-                Debug.Log("Enemy is dead");
+                canHealStun = false;
+                onStunned.Invoke();
                 Instantiate(stunParticles, transform.position, Quaternion.identity);
                 HitStopController.Instance.HitStop();
                 // TODO: DIE()
             }
+        }
 
+        private void HealStun()
+        {
+            if (!canHealStun) return;
+            stunHealth += 1;
+            stunHealth = Mathf.Clamp(stunHealth, 0, stunMaxHealth);
+            flashObject.ChangeColorOnPercent(GetHealthPercentage());
         }
 
         private void FixedUpdate()
         {
-            Debug.Log("stunHealth: " + stunHealth);
-            stunHealth += 1;
-            stunHealth = Mathf.Clamp(stunHealth, 0, stunMaxHealth);
-            flashObject.ChangeColorOnPercent(GetHealthPercentage());
+            HealStun();
         }
 
 

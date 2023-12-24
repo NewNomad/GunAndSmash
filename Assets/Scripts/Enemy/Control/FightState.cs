@@ -19,6 +19,7 @@ namespace Enemy.Control
         }
         public void OnExit()
         {
+            fire.IsFireState = false;
         }
         public void OnUpdate()
         {
