@@ -5,6 +5,7 @@ namespace Enemy.Control
         Idle,
         Move,
         Fight,
+        Stun,
         Dead
     }
 }
