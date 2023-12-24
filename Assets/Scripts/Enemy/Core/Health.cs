@@ -24,6 +24,8 @@ namespace Enemy.Core
             SetEnemyFlash();
             if (health <= 0)
             {
+                Debug.Log("Enemy is dead");
+                Instantiate(stunParticles, transform.position, Quaternion.identity);
                 // TODO: DIE()
             }
         }

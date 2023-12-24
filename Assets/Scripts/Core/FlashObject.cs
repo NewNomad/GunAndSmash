@@ -37,7 +37,6 @@ public class FlashObject : MonoBehaviour
         float r = defaultColor.r + ((1f - hpPercentage) * (Color.white.b - defaultColor.r));
         float g = defaultColor.g + ((1f - hpPercentage) * (Color.white.b - defaultColor.g));
         float b = defaultColor.b + ((1f - hpPercentage) * (Color.white.b - defaultColor.b));
-        Debug.Log("r: " + r + " g: " + g + " b: " + b);
         Color color = new Color(r, g, b);
         StartCoroutine(EnemyFlashCoroutine(color));
     }

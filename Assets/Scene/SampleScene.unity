@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 280
-  stunParticles: {fileID: 0}
+  stunParticles: {fileID: 19811806, guid: bed1960cd38fb364e8c3754378f8b205, type: 3}
 --- !u!114 &349378871
 MonoBehaviour:
   m_ObjectHideFlags: 0
