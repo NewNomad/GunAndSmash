@@ -17,7 +17,6 @@ namespace Enemy.Core
         private bool canHealStun = true;
         public bool CanHealStun { get => canHealStun; set => canHealStun = value; }
 
-
         private void Awake()
         {
             health = maxHealth;
