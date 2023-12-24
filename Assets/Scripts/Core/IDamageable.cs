@@ -1,3 +1,4 @@
+// TODO: namespaceの変更
 namespace Game.Core
 {
     public interface IDamageable
