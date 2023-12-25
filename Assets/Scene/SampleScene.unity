@@ -8905,6 +8905,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6259199762415429757, guid: 0c7e57b08a3b3ba409a8410ed1e3d8bf, type: 3}
+      propertyPath: maxHealth
+      value: 580
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259199762415429757, guid: 0c7e57b08a3b3ba409a8410ed1e3d8bf, type: 3}
       propertyPath: stunMaxHealth
       value: 180
       objectReference: {fileID: 0}
