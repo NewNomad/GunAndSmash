@@ -6934,6 +6934,10 @@ PrefabInstance:
       propertyPath: stunMaxHealth
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 6259199762415429757, guid: 0c7e57b08a3b3ba409a8410ed1e3d8bf, type: 3}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 19813802, guid: 2363a105a77b13c4491f02a253f86bd3, type: 3}
     - target: {fileID: 6387268746485511988, guid: 0c7e57b08a3b3ba409a8410ed1e3d8bf, type: 3}
       propertyPath: maxChangeStateDuration
       value: 1

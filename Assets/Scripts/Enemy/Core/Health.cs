@@ -13,6 +13,7 @@ namespace Enemy.Core
         private int stunHealth;
         FlashObject flashObject;
         [SerializeField] ParticleSystem stunParticles;
+        [SerializeField] ParticleSystem deathParticles;
         public UnityEvent onStunned;
         private bool canHealStun = true;
         public bool CanHealStun { get => canHealStun; set => canHealStun = value; }
@@ -35,7 +36,10 @@ namespace Enemy.Core
                 onStunned.Invoke();
                 Instantiate(stunParticles, transform.position, Quaternion.identity);
                 HitStopController.Instance.HitStop();
-                // TODO: DIE()
+            }
+            if (health <= 0)
+            {
+                Dead();
             }
         }
 
@@ -45,6 +49,12 @@ namespace Enemy.Core
             stunHealth += 1;
             stunHealth = Mathf.Clamp(stunHealth, 0, stunMaxHealth);
             flashObject.ChangeColorOnPercent(GetHealthPercentage());
+        }
+
+        private void Dead()
+        {
+            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
 
         private void FixedUpdate()
