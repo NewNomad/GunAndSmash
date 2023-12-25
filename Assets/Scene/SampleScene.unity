@@ -1549,6 +1549,7 @@ GameObject:
   - component: {fileID: 526217751}
   - component: {fileID: 526217750}
   - component: {fileID: 526217749}
+  - component: {fileID: 526217753}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1644,6 +1645,62 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &526217753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526217748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846c33653617c834bb95dd256b0b0e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Button
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 235b3fdb-c29c-464b-a1c0-da7676f26cdc
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 0eec98a2-242d-45ca-8852-418720c91545
+        m_Path: <Pointer>/press
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Button
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 45ef42da-4a0b-4ee5-aafa-db1070ef6c56
+        m_Path: <Pointer>/pressure
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Button
+        m_Flags: 0
+      - m_Name: 
+        m_Id: 98db8807-fc77-4930-af41-bbd7236ee80a
+        m_Path: <Mouse>/leftButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Button
+        m_Flags: 0
+      - m_Name: 
+        m_Id: abfbf3a1-814f-4770-a3a7-a346c98a266b
+        m_Path: 
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Button
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!1001 &604566830
 PrefabInstance:
   m_ObjectHideFlags: 0
