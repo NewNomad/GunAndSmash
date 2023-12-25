@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 namespace Game.Core
 {
     public class Health : MonoBehaviour, IDamageable
@@ -9,6 +10,7 @@ namespace Game.Core
         [SerializeField] float invincibleTime = 1.5f;
         private float currentInvincibleTime = 0f;
         SpriteRenderer spriteRenderer;
+        public UnityEvent<int, int> OnHealthChanged;
 
         private void Awake()
         {
@@ -27,6 +29,7 @@ namespace Game.Core
             HitStopController.Instance.HitStop();
             currentInvincibleTime = 0f;
             health -= damage;
+            OnHealthChanged.Invoke(health, maxHealth);
             StartCoroutine(InvincibleBlink());
             Debug.Log("Health: " + health);
             if (health <= 0)
