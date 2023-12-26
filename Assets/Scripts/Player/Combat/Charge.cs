@@ -4,6 +4,7 @@ namespace Game.Combat
     public class Charge : MonoBehaviour
     {
         [SerializeField] int damage = 600;
+        [SerializeField] float knockback = 100f;
         Rigidbody2D rb;
 
         private void Awake()
@@ -11,12 +12,11 @@ namespace Game.Combat
             rb = GetComponent<Rigidbody2D>();
         }
 
-
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.gameObject.TryGetComponent(out ICharged charged)) { return; }
-            Vector2 directionToOther = other.transform.position - transform.position;
-            charged.OnCharged(rb.velocity.normalized);
+            Vector2 directionToOther = (other.transform.position - transform.position).normalized;
+            charged.OnCharged(directionToOther, damage, knockback);
         }
     }
 }

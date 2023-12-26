@@ -916,6 +916,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunTime: 7
   stunBlinkTime: 0.25
+--- !u!114 &349378883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349378861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871f8569e8afccb4fa8927ed05ff7157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &355424655
 GameObject:
   m_ObjectHideFlags: 0
@@ -8864,10 +8876,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_17
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 92.4
@@ -8908,6 +8916,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8921,14 +8933,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.2
@@ -8969,6 +8973,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8982,10 +8994,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_3
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19
@@ -9025,6 +9033,10 @@ PrefabInstance:
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9096,10 +9108,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_5
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59.5
@@ -9140,6 +9148,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9153,10 +9165,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_11
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.6
@@ -9196,6 +9204,10 @@ PrefabInstance:
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9267,10 +9279,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_12
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.5
@@ -9310,6 +9318,10 @@ PrefabInstance:
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9381,10 +9393,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_7
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 94.6
@@ -9424,6 +9432,10 @@ PrefabInstance:
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9495,10 +9507,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_8
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 73.2
@@ -9539,6 +9547,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9552,10 +9564,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_15
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 96.1
@@ -9595,6 +9603,10 @@ PrefabInstance:
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9666,10 +9678,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_13
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.2
@@ -9709,6 +9717,10 @@ PrefabInstance:
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9966,10 +9978,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_6
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 92.3
@@ -10010,6 +10018,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10023,10 +10035,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_4
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 50.6
@@ -10067,6 +10075,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10080,10 +10092,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1189926867}
     m_Modifications:
-    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
-      propertyPath: m_Name
-      value: RespawnPoint_2
-      objectReference: {fileID: 0}
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.3
@@ -10123,6 +10131,10 @@ PrefabInstance:
     - target: {fileID: 195155888111247506, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945663926743900257, guid: f5b21fa8dccf42a43b72e535c9c55bcb, type: 3}
+      propertyPath: m_Name
+      value: RespawnPoint_2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10238,6 +10250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8364888116984939480, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10325,6 +10341,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 241902066785523550, guid: 0c7e57b08a3b3ba409a8410ed1e3d8bf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 349378873}
+    - targetCorrespondingSourceObject: {fileID: 241902066785523550, guid: 0c7e57b08a3b3ba409a8410ed1e3d8bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 349378883}
   m_SourcePrefab: {fileID: 100100000, guid: 0c7e57b08a3b3ba409a8410ed1e3d8bf, type: 3}
 --- !u!1001 &9061157192613023118
 PrefabInstance:
