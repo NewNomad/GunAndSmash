@@ -3,6 +3,7 @@ namespace Game.Combat
 {
     public class Charge : MonoBehaviour
     {
+        [SerializeField] int damage = 600;
         Rigidbody2D rb;
 
         private void Awake()

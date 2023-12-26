@@ -9,11 +9,13 @@ namespace Game.Control
 {
     [RequireComponent(typeof(PlayerInputController), typeof(Mover), typeof(Stop))]
     [RequireComponent(typeof(Fire), typeof(WallCheck))]
+    [RequireComponent(typeof(Charge))]
     public class PlayerController : MonoBehaviour
     {
         private StateMachine stateMachine = new StateMachine();
         static public PlayerController instance;
         Mover mover;
+        Charge charge;
         Stop stop;
         Fire fire;
         WallCheck wallCheck;
@@ -42,7 +44,7 @@ namespace Game.Control
 
         private void InitializeStates()
         {
-            stateMachine.RegisterState(new MoveState(stateMachine, wallCheck, mover));
+            stateMachine.RegisterState(new MoveState(stateMachine, wallCheck, mover, charge));
             stateMachine.RegisterState(new FireState(stateMachine, mover, fire));
             stateMachine.RegisterState(new IdleState(stateMachine));
             stateMachine.RegisterState(new StopState(stateMachine, stop));
@@ -58,6 +60,7 @@ namespace Game.Control
         private void InitializeGetComponents()
         {
             mover = GetComponent<Mover>();
+            charge = GetComponent<Charge>();
             stop = GetComponent<Stop>();
             fire = GetComponent<Fire>();
             wallCheck = GetComponent<WallCheck>();

@@ -1,3 +1,4 @@
+using Game.Combat;
 using Game.Core;
 using Game.Move;
 using UnityEngine;
@@ -10,12 +11,14 @@ namespace Game.Control
         StateMachine stateMachine;
         WallCheck wallCheck;
         Mover mover;
+        Charge charge;
         const float moveSpeedOnWall = 0.7f;
-        public MoveState(StateMachine stateMachine, WallCheck wallCheck, Mover mover)
+        public MoveState(StateMachine stateMachine, WallCheck wallCheck, Mover mover, Charge charge)
         {
             this.stateMachine = stateMachine;
             this.wallCheck = wallCheck;
             this.mover = mover;
+            this.charge = charge;
         }
 
         const float changeMoveStateTime = 1f;
