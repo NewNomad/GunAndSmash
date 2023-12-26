@@ -5,6 +5,7 @@ namespace Game.Combat
     {
         [SerializeField] int damage = 600;
         [SerializeField] float knockback = 100f;
+        [SerializeField] ParticleSystem chargedParticles;
         Rigidbody2D rb;
 
         private void Awake()
