@@ -1,5 +1,6 @@
 using System.Collections;
 using Enemy.Core;
+using Game.Combat;
 using UnityEngine;
 namespace Enemy.Combat
 {
@@ -8,6 +9,7 @@ namespace Enemy.Combat
         Rigidbody2D rb;
         Health health;
         Stun stun;
+        Charge charge;
         [SerializeField] float timeToTakeDamage = 1f;
         [SerializeField] ParticleSystem chargedParticles;
 
@@ -16,6 +18,7 @@ namespace Enemy.Combat
             TryGetComponent(out rb);
             TryGetComponent(out health);
             TryGetComponent(out stun);
+            TryGetComponent(out charge);
         }
 
         public void OnCharged(Vector2 direction, int damage, float knockback)
@@ -29,10 +32,12 @@ namespace Enemy.Combat
 
         IEnumerator TakeDamageAfterCharged(int damage)
         {
+            charge.CanCharge = true;
             yield return new WaitForSeconds(timeToTakeDamage);
             health.TakeDamage(damage);
             stun.IsStun = false; // 食らったらスタン解除
-            yield return null;
+            charge.CanCharge = false;
+            yield break;
         }
     }
 }

@@ -17,6 +17,9 @@ GameObject:
   - component: {fileID: 6259199762415429757}
   - component: {fileID: 1969021290587044155}
   - component: {fileID: 4261935318135809496}
+  - component: {fileID: 3181382854341667512}
+  - component: {fileID: 4293933119532900635}
+  - component: {fileID: 2261672748918612575}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -167,8 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   distanceToPlayer: 5
-  maxChangeStateDuration: 0
-  minChangeStateDuration: 0
+  maxChangeStateDuration: 1
+  minChangeStateDuration: 1
 --- !u!114 &4565105445338355560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,8 +196,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0987ee0e7da87a4d957dda90439a8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 280
-  stunParticles: {fileID: 19811806, guid: bed1960cd38fb364e8c3754378f8b205, type: 3}
+  maxHealth: 580
+  stunMaxHealth: 180
+  stunParticles: {fileID: 19878032, guid: e37a3705b2e393e498b22437463251d2, type: 3}
+  deathParticles: {fileID: 19813802, guid: 2363a105a77b13c4491f02a253f86bd3, type: 3}
+  onStunned:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1969021290587044155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,3 +235,46 @@ MonoBehaviour:
   BulletCount: 3
   bulletPrefab: {fileID: -876918792236209408, guid: cd31944301414ab42b28d49050007f91, type: 3}
   fireType: 0
+--- !u!114 &3181382854341667512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241902066785523550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f214f7054586a9a4e80490f10836cd21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stunTime: 7
+  stunBlinkTime: 0.25
+--- !u!114 &4293933119532900635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241902066785523550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871f8569e8afccb4fa8927ed05ff7157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToTakeDamage: 1
+  chargedParticles: {fileID: 19811806, guid: bed1960cd38fb364e8c3754378f8b205, type: 3}
+--- !u!114 &2261672748918612575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241902066785523550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ccbf3a7a9512d438d17cb58a450722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 600
+  knockback: 100
+  canCharge: 0
