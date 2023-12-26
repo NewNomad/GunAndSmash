@@ -52,7 +52,6 @@ namespace Game.Control
         {
             if (wallCheck.IsTouchingWall())
             {
-                Debug.Log("MoveOnTouchingWall");
                 Vector2 moveDirection = mover.IsMovingLeft()
                     ? new Vector2(-moveSpeedOnWall, moveSpeedOnWall)
                     : new Vector2(moveSpeedOnWall, moveSpeedOnWall);

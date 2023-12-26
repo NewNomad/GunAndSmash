@@ -12,16 +12,19 @@ namespace Game.Control
         const float onFireMoveSpeed = 2f;
         Mover mover;
         Fire fire;
+        FireHomingLaser fireHomingLaser;
 
-        public FireState(StateMachine stateMachine, Mover mover, Fire fire)
+        public FireState(StateMachine stateMachine, Mover mover, Fire fire, FireHomingLaser fireHomingLaser)
         {
             this.stateMachine = stateMachine;
             this.mover = mover;
             this.fire = fire;
+            this.fireHomingLaser = fireHomingLaser;
         }
         public void OnEnter()
         {
             fire.FireBullet();
+            fireHomingLaser.FireHomingLaserAtTarget();
             mover.Move(Vector2.up, onFireMoveSpeed);
             stateMachine.ChangeState(StateID.Idle);
         }

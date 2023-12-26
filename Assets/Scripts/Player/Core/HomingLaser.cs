@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HomingLaser : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     Vector3 homingVelocity;
     Vector3 homingPosition;
     // 寿命
@@ -17,9 +17,20 @@ public class HomingLaser : MonoBehaviour
         currentLivingTime = maxLivingTime;
     }
 
+    public void Setup(Transform target)
+    {
+        this.target = target;
+    }
+
     private void Update()
     {
-        Vector3 diff = target.position - transform.position;
+        Debug.Log(target);
+        // if (target == null)
+        // {
+        //     DestroyLaser();
+        //     return;
+        // }
+        Vector3 diff = target.transform.position - transform.position;
         var acceleration = (diff - homingVelocity * currentLivingTime) * 2f / (currentLivingTime * currentLivingTime);
         currentLivingTime -= Time.deltaTime;
         if (currentLivingTime < 0f)

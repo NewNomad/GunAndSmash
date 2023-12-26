@@ -31,7 +31,6 @@ namespace Game.Core
             health -= damage;
             OnHealthChanged.Invoke(health, maxHealth);
             StartCoroutine(InvincibleBlink());
-            Debug.Log("Health: " + health);
             if (health <= 0)
             {
                 Death();
