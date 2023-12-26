@@ -928,6 +928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 871f8569e8afccb4fa8927ed05ff7157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToTakeDamage: 1
+  chargedParticles: {fileID: 19811806, guid: bed1960cd38fb364e8c3754378f8b205, type: 3}
 --- !u!1 &355424655
 GameObject:
   m_ObjectHideFlags: 0
@@ -10322,6 +10324,10 @@ PrefabInstance:
       propertyPath: stunMaxHealth
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 6259199762415429757, guid: 0c7e57b08a3b3ba409a8410ed1e3d8bf, type: 3}
+      propertyPath: stunParticles
+      value: 
+      objectReference: {fileID: 19878032, guid: e37a3705b2e393e498b22437463251d2, type: 3}
     - target: {fileID: 6259199762415429757, guid: 0c7e57b08a3b3ba409a8410ed1e3d8bf, type: 3}
       propertyPath: deathParticles
       value: 

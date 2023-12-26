@@ -18,7 +18,7 @@ namespace Game.Control
             this.stateMachine = stateMachine;
             this.wallCheck = wallCheck;
             this.mover = mover;
-            this.charge = charge;
+            this.charge = charge; // FIXME: 使ってない
         }
 
         const float changeMoveStateTime = 1f;

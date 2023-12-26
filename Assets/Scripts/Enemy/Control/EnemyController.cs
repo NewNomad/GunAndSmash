@@ -14,6 +14,7 @@ namespace Enemy.Control
         Fire fire;
         Health health;
         Stun stun;
+        Charged charged;
         private void Awake()
         {
             InitializeGetComponents();
@@ -28,6 +29,7 @@ namespace Enemy.Control
             fire = GetComponent<Fire>();
             health = GetComponent<Health>();
             stun = GetComponent<Stun>();
+            charged = GetComponent<Charged>();
             GetComponent<Health>().onStunned.AddListener(OnStunned);
         }
 
@@ -35,7 +37,7 @@ namespace Enemy.Control
         {
             stateMachine.RegisterState(new MoveState(stateMachine, mover));
             stateMachine.RegisterState(new FightState(stateMachine, fire));
-            stateMachine.RegisterState(new StunState(stateMachine, health, stun));
+            stateMachine.RegisterState(new StunState(stateMachine, health, stun, charged));
         }
         private void Update()
         {
