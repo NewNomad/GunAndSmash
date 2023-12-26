@@ -5,6 +5,7 @@ namespace Game.Combat
     {
         [SerializeField] int damage = 600;
         [SerializeField] float knockback = 100f;
+        [SerializeField] bool canCharge = true; // プレイヤーは常時チャージできるが、敵はStun状態の時のみチャージできる
         Rigidbody2D rb;
 
         private void Awake()
