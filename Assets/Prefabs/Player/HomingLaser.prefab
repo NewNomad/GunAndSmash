@@ -243,6 +243,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e0a3a54d3611344a8a5e03ac513e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  maxLivingTime: 1
+  maxLivingTime: 0.1
   trailRenderer: {fileID: 1902229145460616302}

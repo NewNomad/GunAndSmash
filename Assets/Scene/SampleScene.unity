@@ -6035,7 +6035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58dd55cb89941754e8419440d41d2960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 2831659022440017725, guid: 544b0a47dfbded04d96a6a5ff61ee9af, type: 3}
+  laserPrefab: {fileID: 20475025778112337, guid: 544b0a47dfbded04d96a6a5ff61ee9af, type: 3}
   targetTime: 6
 --- !u!1001 &1429826078
 PrefabInstance:
