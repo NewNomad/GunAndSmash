@@ -31,6 +31,7 @@ namespace Enemy.Combat
         {
             yield return new WaitForSeconds(timeToTakeDamage);
             health.TakeDamage(damage);
+            stun.IsStun = false; // 食らったらスタン解除
             yield return null;
         }
     }
