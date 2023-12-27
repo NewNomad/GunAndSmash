@@ -4835,6 +4835,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef7e21ccb1516947a19553ae2a34348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxEnemies: 10
+  maxSpawnEnemiesCount: 5
+  respawnInterval: 5
+  maxDistanceFromPlayer: 10
+  respawnParticles: {fileID: 19878032, guid: e37a3705b2e393e498b22437463251d2, type: 3}
 --- !u!1 &1200912598
 GameObject:
   m_ObjectHideFlags: 0

@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0987ee0e7da87a4d957dda90439a8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 580
+  maxHealth: 620
   stunMaxHealth: 180
   stunParticles: {fileID: 19878032, guid: e37a3705b2e393e498b22437463251d2, type: 3}
   deathParticles: {fileID: 19813802, guid: 2363a105a77b13c4491f02a253f86bd3, type: 3}
@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ccbf3a7a9512d438d17cb58a450722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 600
+  damage: 500
   knockback: 100
   canCharge: 0
+  isPlayer: 0
