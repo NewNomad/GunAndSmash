@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -46,6 +47,9 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnClick(InputAction.CallbackContext context)
     {
+        // UIの上にカーソルがあったら、入力を受け付けない
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
         onStop.Invoke();
         clickDuration = 0f;
         startClickPos = GetMousePos();
@@ -53,6 +57,10 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnClickCanceled(InputAction.CallbackContext context)
     {
+        // UIの上にカーソルがあったら、入力を受け付けない
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         // FIXME: 実装時間がないため一次的に長押し系は無効化
         // if (clickDuration < maxClickDuration)
         // {
