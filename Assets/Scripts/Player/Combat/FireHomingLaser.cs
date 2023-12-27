@@ -20,8 +20,6 @@ namespace Game.Combat
 
         public void FireHomingLaserAtTarget()
         {
-            Debug.Log(this.targetTransform.Count);
-
             foreach (Transform target in targetTransform)
             {
                 if (target == null) { continue; }
