@@ -22,24 +22,9 @@ public class RespawnController : MonoBehaviour
     [SerializeField] float maxDistanceFromPlayer = 10f;
     [SerializeField] ParticleSystem respawnParticles;
     [SerializeField] float respawnEnemiesTime = 0.1f;
-    List<GameObject> respawnPoints = new List<GameObject>();
     List<GameObject> activeEnemies = new List<GameObject>();
     private float respawnTimer = 0f;
     private int totalKills = 0;
-
-    private void Awake()
-    {
-        InitializeRespawnPoint();
-    }
-
-    void InitializeRespawnPoint()
-    {
-        int childCount = transform.childCount;
-        for (int i = 0; i < childCount; i++)
-        {
-            respawnPoints.Add(transform.GetChild(i).gameObject);
-        }
-    }
 
     private void Update()
     {
@@ -86,28 +71,24 @@ public class RespawnController : MonoBehaviour
 
     public Vector3 GetRespawnPoint()
     {
-        List<GameObject> suitablePoints = new List<GameObject>();
+        int maxAttempts = 100;
+        float checkRadius = 1f; // 当たり判定をチェックする半径
 
-        for (int i = 0; i < respawnPoints.Count; i++)
+        for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
-            if (Vector3.Distance(PlayerController.instance.transform.position, respawnPoints[i].transform.position) < maxDistanceFromPlayer)
+            Vector2 randomDirection = Random.insideUnitCircle.normalized;
+            Vector2 randomPosition = PlayerController.instance.transform.position + (Vector3)(randomDirection * Random.Range(0, maxDistanceFromPlayer));
+
+            if (!Physics2D.OverlapCircle(randomPosition, checkRadius))
             {
-                suitablePoints.Add(respawnPoints[i]);
+                // 当たり判定がない場所が見つかった
+                return randomPosition;
             }
         }
 
-        if (suitablePoints.Count > 0)
-        {
-            int randomPoint = Random.Range(0, suitablePoints.Count);
-            return suitablePoints[randomPoint].transform.position;
-        }
-        if (respawnPoints.Count > 0)
-        {
 
-            int randomPoint = Random.Range(0, respawnPoints.Count);
-            return respawnPoints[randomPoint].transform.position;
-        }
-        return new Vector3(0, 30, 0);
+        return new Vector3(0, 0, 0); // 空いている位置が見つからない場合のデフォルト値
+
     }
 
     void CheckAndRelocateEnemies()
