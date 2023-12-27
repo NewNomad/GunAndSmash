@@ -20,12 +20,11 @@ namespace Game.Combat
 
         public void FireHomingLaserAtTarget()
         {
-            // FIXME: なんかエラーある
-            if (!IsTargetSet()) { return; }
+            Debug.Log(this.targetTransform.Count);
 
             foreach (Transform target in targetTransform)
             {
-                if (target == null) { return; }
+                if (target == null) { continue; }
                 HomingLaser laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
                 laser.Setup(target, GetHomingVelocity(target.transform.position));
             }
@@ -52,7 +51,6 @@ namespace Game.Combat
 
         IEnumerator targetTimer(IDamageable target, Transform targetTransform)
         {
-            Debug.Log(this.targetTransform.Count);
             this.target.Add(target);
             this.targetTransform.Add(targetTransform);
             // 重複を削除

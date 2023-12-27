@@ -32,7 +32,7 @@ public class RespawnController : MonoBehaviour
         if (respawnTimer > respawnInterval)
         {
             StartCoroutine(TryRespawnEnemies());
-            CheckAndRelocateEnemies();
+            StartCoroutine(CheckAndRelocateEnemies());
             respawnTimer = 0f;
         }
     }
@@ -74,24 +74,25 @@ public class RespawnController : MonoBehaviour
         int maxAttempts = 100;
         float checkRadius = 1f; // 当たり判定をチェックする半径
 
+        LayerMask layerMask = LayerMask.GetMask("Wall");
+        int inverseLayerMask = ~layerMask; // 
+
         for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
             Vector2 randomDirection = Random.insideUnitCircle.normalized;
             Vector2 randomPosition = PlayerController.instance.transform.position + (Vector3)(randomDirection * Random.Range(0, maxDistanceFromPlayer));
 
-            if (!Physics2D.OverlapCircle(randomPosition, checkRadius))
+            if (!Physics2D.OverlapCircle(randomPosition, checkRadius, inverseLayerMask))
             {
                 // 当たり判定がない場所が見つかった
                 return randomPosition;
             }
         }
-
-
         return new Vector3(0, 0, 0); // 空いている位置が見つからない場合のデフォルト値
 
     }
 
-    void CheckAndRelocateEnemies()
+    IEnumerator CheckAndRelocateEnemies()
     {
         foreach (GameObject enemy in activeEnemies)
         {
@@ -102,6 +103,7 @@ public class RespawnController : MonoBehaviour
                 {
                     Instantiate(respawnParticles, enemy.transform.position, Quaternion.identity);
                 }
+                yield return new WaitForSeconds(respawnEnemiesTime);
             }
         }
     }
