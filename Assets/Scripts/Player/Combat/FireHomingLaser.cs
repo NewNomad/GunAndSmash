@@ -22,7 +22,7 @@ namespace Game.Combat
         {
             // FIXME: なんかエラーある
             if (!IsTargetSet()) { return; }
-            if (targetTransform.Count == 0) { return; }
+
             foreach (Transform target in targetTransform)
             {
                 if (target == null) { return; }
@@ -52,6 +52,7 @@ namespace Game.Combat
 
         IEnumerator targetTimer(IDamageable target, Transform targetTransform)
         {
+            Debug.Log(this.targetTransform.Count);
             this.target.Add(target);
             this.targetTransform.Add(targetTransform);
             // 重複を削除
