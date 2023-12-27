@@ -20,7 +20,6 @@ public class HomingLaser : MonoBehaviour
     {
         this.target = target;
         this.homingVelocity = homingVelocity;
-        Debug.Log(homingVelocity.x);
     }
 
     private void Update()

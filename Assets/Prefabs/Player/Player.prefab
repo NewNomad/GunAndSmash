@@ -19,6 +19,9 @@ GameObject:
   - component: {fileID: 280992878401090718}
   - component: {fileID: 4865524990996155496}
   - component: {fileID: 6058124326952212438}
+  - component: {fileID: 5863263925734276243}
+  - component: {fileID: 743167754966638919}
+  - component: {fileID: 8361820906236386187}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -148,7 +151,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &5882379736260935320
 CircleCollider2D:
@@ -282,3 +285,50 @@ MonoBehaviour:
     m_Bits: 64
   wallCheckDistance: 0.7
   groundCheckDistance: 0.7
+--- !u!114 &5863263925734276243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937431891679069787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ccbf3a7a9512d438d17cb58a450722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 600
+  knockback: 100
+  canCharge: 1
+--- !u!114 &743167754966638919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937431891679069787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1084dc472c35d434599529d95f511fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  invincibleTime: 1.5
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8361820906236386187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937431891679069787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58dd55cb89941754e8419440d41d2960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPrefab: {fileID: 20475025778112337, guid: 544b0a47dfbded04d96a6a5ff61ee9af, type: 3}
+  targetTime: 8
+  laserSpeed: 200
