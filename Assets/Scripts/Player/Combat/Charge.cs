@@ -6,6 +6,9 @@ namespace Game.Combat
         [SerializeField] int damage = 600;
         [SerializeField] float knockback = 100f;
         [SerializeField] bool canCharge = true; // プレイヤーは常時チャージできるが、敵はStun状態の時のみチャージできる
+
+        [Header("敵なら絶対にChargeさせる")]
+        [SerializeField] bool isPlayer = false;
         public bool CanCharge { set => canCharge = value; }
         Rigidbody2D rb;
 
@@ -19,7 +22,7 @@ namespace Game.Combat
             if (!canCharge) { return; }
             if (!other.gameObject.TryGetComponent(out ICharged charged)) { return; }
             Vector2 directionToOther = (other.transform.position - transform.position).normalized;
-            charged.OnCharged(directionToOther, damage, knockback);
+            charged.OnCharged(directionToOther, damage, knockback, isPlayer);
         }
     }
 }

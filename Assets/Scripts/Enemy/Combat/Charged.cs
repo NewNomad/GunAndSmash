@@ -21,9 +21,10 @@ namespace Enemy.Combat
             TryGetComponent(out charge);
         }
 
-        public void OnCharged(Vector2 direction, int damage, float knockback)
+        public void OnCharged(Vector2 direction, int damage, float knockback, bool isPlayer)
         {
-            if (!stun.IsStun) { return; }
+
+            if (isPlayer && !stun.IsStun) { return; }
             HitStopController.Instance.HitStop();
             Instantiate(chargedParticles, transform.position, Quaternion.identity);
             rb.AddForce(direction * knockback, ForceMode2D.Impulse);

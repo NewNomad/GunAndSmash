@@ -300,6 +300,7 @@ MonoBehaviour:
   damage: 600
   knockback: 100
   canCharge: 1
+  isPlayer: 1
 --- !u!114 &743167754966638919
 MonoBehaviour:
   m_ObjectHideFlags: 0
