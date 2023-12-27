@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Game.Core;
 using UnityEngine;
 namespace Game.Combat
@@ -8,8 +10,8 @@ namespace Game.Combat
         [SerializeField] HomingLaser laserPrefab;
         [SerializeField] float targetTime = 6f;
         [SerializeField] float laserSpeed = 200f;
-        IDamageable target;
-        Transform targetTransform;
+        List<IDamageable> target = new List<IDamageable>();
+        List<Transform> targetTransform = new List<Transform>();
         Rigidbody2D rb;
         private void Awake()
         {
@@ -18,17 +20,21 @@ namespace Game.Combat
 
         public void FireHomingLaserAtTarget()
         {
+            // FIXME: なんかエラーある
             if (!IsTargetSet()) { return; }
-            var laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
-            laser.Setup(targetTransform, GetHomingVelocity());
-            Debug.Log(targetTransform);
+            if (targetTransform.Count == 0) { return; }
+            foreach (Transform target in targetTransform)
+            {
+                if (target == null) { return; }
+                HomingLaser laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+                laser.Setup(target, GetHomingVelocity(target.transform.position));
+            }
         }
 
         // 敵とは反対で180度のランダムで飛ぶようにする
-        private Vector3 GetHomingVelocity()
+        private Vector3 GetHomingVelocity(Vector3 targetPosition)
         {
-            // FIXME: 敵がいなくてもエラーにならないようにする
-            Vector3 direction = (targetTransform.position - transform.position).normalized;
+            Vector3 direction = (targetPosition - transform.position).normalized;
             Vector3 oppositeDirection = new Vector3(-direction.x, -direction.y, 0);
 
             float randomAngle = Random.Range(0, 180);
@@ -36,21 +42,28 @@ namespace Game.Combat
             return randomDirection * laserSpeed;
         }
 
-        public bool IsTargetSet() => target != null;
+        public bool IsTargetSet() => target.Count != 0;
 
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.gameObject.TryGetComponent(out IDamageable damageable)) { return; }
-            target = damageable;
-            targetTransform = other.transform;
-            StartCoroutine(targetTimer());
+            StartCoroutine(targetTimer(damageable, other.transform));
         }
 
-        IEnumerator targetTimer()
+        IEnumerator targetTimer(IDamageable target, Transform targetTransform)
         {
+            this.target.Add(target);
+            this.targetTransform.Add(targetTransform);
+            // 重複を削除
+            this.target = this.target.Distinct().ToList();
+            this.targetTransform = this.targetTransform.Distinct().ToList();
             yield return new WaitForSeconds(targetTime);
-            target = null;
-            targetTransform = null;
+
+            // 対象の要素がなければ終了
+            if (!this.target.Contains(target)) { yield break; }
+
+            this.target.Remove(target);
+            this.targetTransform.Remove(targetTransform);
             yield break;
         }
     }

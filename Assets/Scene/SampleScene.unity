@@ -6036,7 +6036,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 20475025778112337, guid: 544b0a47dfbded04d96a6a5ff61ee9af, type: 3}
-  targetTime: 6
+  targetTime: 8
+  laserSpeed: 200
 --- !u!1001 &1429826078
 PrefabInstance:
   m_ObjectHideFlags: 0
