@@ -13,23 +13,23 @@ public class HomingLaser : MonoBehaviour
     private void Awake()
     {
         homingPosition = transform.position;
-        homingVelocity = new Vector3(0, -50, 0);
         currentLivingTime = maxLivingTime;
     }
 
-    public void Setup(Transform target)
+    public void Setup(Transform target, Vector3 homingVelocity)
     {
         this.target = target;
+        this.homingVelocity = homingVelocity;
+        Debug.Log(homingVelocity.x);
     }
 
     private void Update()
     {
-        Debug.Log(target);
-        // if (target == null)
-        // {
-        //     DestroyLaser();
-        //     return;
-        // }
+        if (target == null)
+        {
+            DestroyLaser();
+            return;
+        }
         Vector3 diff = target.transform.position - transform.position;
         var acceleration = (diff - homingVelocity * currentLivingTime) * 2f / (currentLivingTime * currentLivingTime);
         currentLivingTime -= Time.deltaTime;
