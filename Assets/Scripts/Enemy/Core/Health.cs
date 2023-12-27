@@ -17,6 +17,7 @@ namespace Enemy.Core
         public UnityEvent onStunned;
         private bool canHealStun = true;
         public bool CanHealStun { get => canHealStun; set => canHealStun = value; }
+        public UnityEvent<GameObject> OnDead;
 
         private void Awake()
         {
@@ -53,6 +54,7 @@ namespace Enemy.Core
 
         private void Dead()
         {
+            OnDead.Invoke(this.gameObject);
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

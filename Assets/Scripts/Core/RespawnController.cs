@@ -1,121 +1,143 @@
-namespace Game.Core
+
+using System.Collections.Generic;
+using Enemy.Core;
+using Game.Control;
+using UnityEngine;
+
+public class RespawnController : MonoBehaviour
 {
-    using System.Collections.Generic;
-    using Game.Control;
-    using UnityEngine;
+    [System.Serializable]
 
-    public class RespawnController : MonoBehaviour
+    public class EnemySpawnInfo
     {
-        [System.Serializable]
+        public GameObject enemyPrefab;
+        public int spawnProbability;
+        public int requireKillCount;
+    }
+    [SerializeField] List<EnemySpawnInfo> enemyTypes;
+    [SerializeField] int maxEnemies = 10;
+    [SerializeField] int maxSpawnEnemiesCount = 5;
+    [SerializeField] float respawnInterval = 5f;
+    [SerializeField] float maxDistanceFromPlayer = 10f;
+    [SerializeField] ParticleSystem respawnParticles;
+    List<GameObject> respawnPoints = new List<GameObject>();
+    List<GameObject> activeEnemies = new List<GameObject>();
+    private float respawnTimer = 0f;
+    private int totalKills = 0;
 
-        public class EnemySpawnInfo
+    private void Awake()
+    {
+        InitializeRespawnPoint();
+    }
+
+    void InitializeRespawnPoint()
+    {
+        int childCount = transform.childCount;
+        for (int i = 0; i < childCount; i++)
         {
-            public GameObject enemyPrefab;
-            public int spawnProbability;
-            public int requireKillCount;
+            respawnPoints.Add(transform.GetChild(i).gameObject);
         }
-        [SerializeField] List<EnemySpawnInfo> enemyTypes;
-        [SerializeField] int maxEnemies = 10;
-        [SerializeField] int maxSpawnEnemiesCount = 5;
-        [SerializeField] float respawnInterval = 5f;
-        [SerializeField] float maxDistanceFromPlayer = 10f;
-        [SerializeField] ParticleSystem respawnParticles;
-        List<GameObject> respawnPoints = new List<GameObject>();
-        List<GameObject> activeEnemies = new List<GameObject>();
-        private float respawnTimer = 0f;
-        private int totalKills = 0;
+    }
 
-        private void Awake()
+    private void Update()
+    {
+        respawnTimer += Time.deltaTime;
+        if (respawnTimer > respawnInterval)
         {
-            InitializeRespawnPoint();
+            TryRespawnEnemies();
+            CheckAndRelocateEnemies();
+            respawnTimer = 0f;
         }
+    }
 
-        void InitializeRespawnPoint()
+    void TryRespawnEnemies()
+    {
+        int emeniesToSpawn = Mathf.Min(maxSpawnEnemiesCount, maxEnemies - activeEnemies.Count);
+        for (int i = 0; i < emeniesToSpawn; i++)
         {
-            for (int i = 0; i < respawnPoints.Count; i++)
+            GameObject enemyPrefab = ChooseEnemyPrefabs();
+            if (enemyPrefab == null) { return; }
+            Vector3 respawnPoint = GetRespawnPoint();
+            SpawnEnemyAt(respawnPoint, enemyPrefab);
+        }
+    }
+
+    void SpawnEnemyAt(Vector3 position, GameObject prefab)
+    {
+        GameObject newEnemy = Instantiate(prefab, position, Quaternion.identity);
+        newEnemy.GetComponent<Health>().OnDead.AddListener(OnEnemyDead);
+        activeEnemies.Add(newEnemy);
+        if (respawnParticles != null)
+        {
+            Instantiate(respawnParticles, position, Quaternion.identity);
+        }
+    }
+
+    void OnEnemyDead(GameObject enemy)
+    {
+        activeEnemies.Remove(enemy);
+        totalKills++;
+    }
+
+    public Vector3 GetRespawnPoint()
+    {
+        List<GameObject> suitablePoints = new List<GameObject>();
+
+        for (int i = 0; i < respawnPoints.Count; i++)
+        {
+            if (Vector3.Distance(PlayerController.instance.transform.position, respawnPoints[i].transform.position) < maxDistanceFromPlayer)
             {
-                respawnPoints.Add(transform.GetChild(i).gameObject);
+                suitablePoints.Add(respawnPoints[i]);
             }
         }
 
-        private void Update()
+        if (suitablePoints.Count > 0)
         {
-            respawnTimer += Time.deltaTime;
-            if (respawnTimer > respawnInterval)
-            {
-                TryRespawnEnemies();
-                respawnTimer = 0f;
-            }
+            int randomPoint = Random.Range(0, suitablePoints.Count);
+            return suitablePoints[randomPoint].transform.position;
         }
-
-        void TryRespawnEnemies()
+        if (respawnPoints.Count > 0)
         {
-            int emeniesToSpawn = Mathf.Min(maxSpawnEnemiesCount, maxEnemies - activeEnemies.Count);
-            for (int i = 0; i < emeniesToSpawn; i++)
-            {
-                GameObject enemyPrefab = ChooseEnemyPrefabs();
-                if (enemyPrefab == null) { return; }
-                SpawnEnemyAt(GetRespawnPoint(), enemyPrefab);
-            }
+
+            int randomPoint = Random.Range(0, respawnPoints.Count);
+            return respawnPoints[randomPoint].transform.position;
         }
+        return new Vector3(0, 30, 0);
+    }
 
-        void SpawnEnemyAt(Vector3 position, GameObject prefab)
+    void CheckAndRelocateEnemies()
+    {
+        foreach (GameObject enemy in activeEnemies)
         {
-            GameObject newEnemy = Instantiate(prefab, position, Quaternion.identity);
-            activeEnemies.Add(newEnemy);
-            if (respawnParticles != null)
+            if (enemy != null && Vector3.Distance(PlayerController.instance.transform.position, enemy.transform.position) > maxDistanceFromPlayer)
             {
-                Instantiate(respawnParticles, position, Quaternion.identity);
-            }
-        }
-
-        public Vector3 GetRespawnPoint()
-        {
-
-            for (int i = 0; i < respawnPoints.Count; i++)
-            {
-                if (Vector3.Distance(PlayerController.instance.transform.position, respawnPoints[i].transform.position) < maxDistanceFromPlayer)
+                enemy.transform.position = GetRespawnPoint();
+                if (respawnParticles != null)
                 {
-                    return respawnPoints[i].transform.position;
+                    Instantiate(respawnParticles, enemy.transform.position, Quaternion.identity);
                 }
             }
-            return new Vector3(0, 0, 0);
         }
+    }
 
-        void CheckAndRelocateEnemies()
+    GameObject ChooseEnemyPrefabs()
+    {
+        List<EnemySpawnInfo> availableEnemies = enemyTypes.FindAll(enemy => enemy.requireKillCount <= totalKills);
+        int totalProbability = 0;
+        foreach (EnemySpawnInfo enemy in availableEnemies)
         {
-            foreach (GameObject enemy in activeEnemies)
+            totalProbability += enemy.spawnProbability;
+        }
+        int randomPoint = Random.Range(0, totalProbability);
+        int currentProbability = 0;
+        foreach (EnemySpawnInfo enemy in availableEnemies)
+        {
+            currentProbability += enemy.spawnProbability;
+            if (currentProbability > randomPoint)
             {
-                if (enemy != null && Vector3.Distance(PlayerController.instance.transform.position, enemy.transform.position) > maxDistanceFromPlayer)
-                {
-                    enemy.transform.position = GetRespawnPoint();
-                    if (respawnParticles != null)
-                    {
-                        Instantiate(respawnParticles, enemy.transform.position, Quaternion.identity);
-                    }
-                }
+                return enemy.enemyPrefab;
             }
         }
-
-        GameObject ChooseEnemyPrefabs()
-        {
-            List<EnemySpawnInfo> availableEnemies = enemyTypes.FindAll(enemy => enemy.requireKillCount <= totalKills);
-            int totalProbability = 0;
-            foreach (EnemySpawnInfo enemy in availableEnemies)
-            {
-                totalProbability += enemy.spawnProbability;
-            }
-            int randomPoint = Random.Range(0, totalProbability);
-            int currentProbability = 0;
-            foreach (EnemySpawnInfo enemy in availableEnemies)
-            {
-                currentProbability += enemy.spawnProbability;
-                if (currentProbability > randomPoint)
-                {
-                    return enemy.enemyPrefab;
-                }
-            }
-            return null;
-        }
+        return null;
     }
 }
