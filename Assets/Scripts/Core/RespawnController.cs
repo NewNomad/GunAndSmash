@@ -1,4 +1,5 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using Enemy.Core;
 using Game.Control;
@@ -20,6 +21,7 @@ public class RespawnController : MonoBehaviour
     [SerializeField] float respawnInterval = 5f;
     [SerializeField] float maxDistanceFromPlayer = 10f;
     [SerializeField] ParticleSystem respawnParticles;
+    [SerializeField] float respawnEnemiesTime = 0.1f;
     List<GameObject> respawnPoints = new List<GameObject>();
     List<GameObject> activeEnemies = new List<GameObject>();
     private float respawnTimer = 0f;
@@ -44,21 +46,24 @@ public class RespawnController : MonoBehaviour
         respawnTimer += Time.deltaTime;
         if (respawnTimer > respawnInterval)
         {
-            TryRespawnEnemies();
+            StartCoroutine(TryRespawnEnemies());
             CheckAndRelocateEnemies();
             respawnTimer = 0f;
         }
     }
 
-    void TryRespawnEnemies()
+    IEnumerator TryRespawnEnemies()
     {
         int emeniesToSpawn = Mathf.Min(maxSpawnEnemiesCount, maxEnemies - activeEnemies.Count);
         for (int i = 0; i < emeniesToSpawn; i++)
         {
             GameObject enemyPrefab = ChooseEnemyPrefabs();
-            if (enemyPrefab == null) { return; }
-            Vector3 respawnPoint = GetRespawnPoint();
-            SpawnEnemyAt(respawnPoint, enemyPrefab);
+            if (enemyPrefab != null)
+            {
+                Vector3 respawnPoint = GetRespawnPoint();
+                SpawnEnemyAt(respawnPoint, enemyPrefab);
+                yield return new WaitForSeconds(respawnEnemiesTime);
+            }
         }
     }
 
