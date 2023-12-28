@@ -4905,6 +4905,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6280743540041732218, guid: 874ffdad02d4db64c859c028d02c13b3, type: 3}
   m_PrefabInstance: {fileID: 1427477835}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1428918478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6937431891679069787, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
+  m_PrefabInstance: {fileID: 8796524043026804944}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1428918502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428918478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f1274f015674b4ab9f965a4be34de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 1000
+  staminaRecoveryTime: 1
+  staminaRecoveryAmount: 1
+  useStaminaOnFire: 1
+  useStaminaOnMove: 1
 --- !u!1001 &1429826078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6693,11 +6715,16 @@ PrefabInstance:
       propertyPath: _cursorPositionAction.m_Action.m_SingletonActionBindings.Array.data[2].m_Action
       value: Cursor Position
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4889626566548628346, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
+    - {fileID: 3135687872815914471, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2412182774965982802, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6937431891679069787, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1428918502}
   m_SourcePrefab: {fileID: 100100000, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
