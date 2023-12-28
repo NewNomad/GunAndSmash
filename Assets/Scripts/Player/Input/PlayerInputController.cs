@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// <summary>
 /// 入力を受け取ってイベントを発行する
@@ -47,19 +49,24 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnClick(InputAction.CallbackContext context)
     {
-        // UIの上にカーソルがあったら、入力を受け付けない
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
+        if (IsPointerOverSelectable()) return;
+
         onStop.Invoke();
         clickDuration = 0f;
         startClickPos = GetMousePos();
     }
+    // カーソル位置取得用のAction
+    [SerializeField] private InputActionProperty _cursorPositionAction;
+
+    // Selectable以外の対象UIのタグ
+    [SerializeField] private string _uiTag = "InputExclusiveUI";
+
+    private PointerEventData _pointer;
+    private readonly List<RaycastResult> _results = new();
 
     private void OnClickCanceled(InputAction.CallbackContext context)
     {
-        // UIの上にカーソルがあったら、入力を受け付けない
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
+        if (IsPointerOverSelectable()) return;
 
         // FIXME: 実装時間がないため一次的に長押し系は無効化
         // if (clickDuration < maxClickDuration)
@@ -108,5 +115,32 @@ public class PlayerInputController : MonoBehaviour
     {
         Vector2 mousePos = Mouse.current.position.ReadValue();
         return mousePos;
+    }
+
+    private bool IsPointerOverSelectable()
+    {
+        // レイキャスト用の情報を作成
+        PointerEventData _pointer = new PointerEventData(EventSystem.current)
+        {
+            position = GetMousePos()
+        };
+
+        // カーソル上にあるUIをレイキャストで取得
+        _results.Clear();
+        EventSystem.current.RaycastAll(_pointer, _results);
+
+        // SelectableなUI上にカーソルがあったら、入力を受け付けない
+        for (var i = 0; i < _results.Count; i++)
+        {
+            GameObject uiObj = _results[i].gameObject;
+            Debug.Log(uiObj.name);
+
+            if (uiObj.CompareTag(_uiTag))
+                return true;
+
+            if (uiObj.GetComponent<Selectable>() != null)
+                return true;
+        }
+        return false;
     }
 }
