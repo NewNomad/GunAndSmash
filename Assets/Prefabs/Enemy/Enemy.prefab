@@ -168,10 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6069467dda5de64e8543706c121105b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 12
-  distanceToPlayer: 10
+  moveSpeed: 10
+  distanceToPlayer: 8
   maxChangeStateDuration: 3
-  minChangeStateDuration: 5
+  minChangeStateDuration: 6
 --- !u!114 &4565105445338355560
 MonoBehaviour:
   m_ObjectHideFlags: 0
