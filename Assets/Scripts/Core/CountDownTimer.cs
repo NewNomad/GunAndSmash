@@ -7,6 +7,7 @@ namespace Game.Core
     public class CountDownTimer : MonoBehaviour
     {
         [SerializeField] float maxTime = 100f;
+        [SerializeField] float addTimeOnKill = 0.5f;
         [SerializeField] CountDownUI countDownUI;
         float currentTime = 0f;
 
@@ -22,6 +23,13 @@ namespace Game.Core
                 currentTime = 0f;
             }
             countDownUI.CurrentTime = currentTime;
+        }
+
+        public void AddTime()
+        {
+            currentTime += addTimeOnKill;
+            if (currentTime > maxTime) ;
+
         }
     }
 }
