@@ -21,6 +21,7 @@ namespace Game.Core
         [SerializeField] int maxSpawnEnemiesCount = 5;
         [SerializeField] float respawnInterval = 5f;
         [SerializeField] float maxDistanceFromPlayer = 10f;
+        [SerializeField] float minDistanceFromPlayer = 5f;
         [SerializeField] ParticleSystem respawnParticles;
         [SerializeField] float respawnEnemiesTime = 0.1f;
         List<GameObject> activeEnemies = new List<GameObject>();
@@ -80,12 +81,12 @@ namespace Game.Core
         public Vector3 GetRespawnPoint()
         {
             int maxAttempts = 100;
-            float checkRadius = 1f; // 当たり判定をチェックする半径
+            float checkRadius = 1.3f; // 当たり判定をチェックする半径
 
             for (int attempt = 0; attempt < maxAttempts; attempt++)
             {
                 Vector2 randomDirection = Random.insideUnitCircle.normalized;
-                Vector2 randomPosition = PlayerController.instance.transform.position + (Vector3)(randomDirection * Random.Range(0, maxDistanceFromPlayer));
+                Vector2 randomPosition = PlayerController.instance.transform.position + (Vector3)(randomDirection * Random.Range(minDistanceFromPlayer, maxDistanceFromPlayer));
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(randomPosition, checkRadius);
                 if (colliders.Length == 0)
                 {
