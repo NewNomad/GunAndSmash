@@ -3820,7 +3820,7 @@ MonoBehaviour:
   maxSpawnEnemiesCount: 4
   respawnInterval: 8
   maxDistanceFromPlayer: 25
-  respawnParticles: {fileID: 19878032, guid: e37a3705b2e393e498b22437463251d2, type: 3}
+  respawnParticles: {fileID: 19862388, guid: c6c0a6c57e181b741917f42373224db3, type: 3}
   respawnEnemiesTime: 0.1
 --- !u!1 &1200912598
 GameObject:
