@@ -2992,7 +2992,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HP100%
+  m_text: 'HP: 100%'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 84dd14695854bbc43a5faa24fcf93d0d, type: 2}
   m_sharedMaterial: {fileID: 21261991626553910, guid: 84dd14695854bbc43a5faa24fcf93d0d, type: 2}
@@ -4362,7 +4362,7 @@ MonoBehaviour:
   invert: 0
   addPrefix: 1
   addSuffix: 1
-  prefix: HP
+  prefix: 'HP '
   suffix: '%'
   isLooped: 0
   decimals: 0
