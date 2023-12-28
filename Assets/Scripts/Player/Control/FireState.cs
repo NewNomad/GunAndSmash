@@ -1,4 +1,5 @@
 using Game.Combat;
+using Game.Core;
 using Game.Move;
 using UnityEngine;
 
@@ -13,13 +14,15 @@ namespace Game.Control
         Mover mover;
         Fire fire;
         FireHomingLaser fireHomingLaser;
+        Stamina stamina;
 
-        public FireState(StateMachine stateMachine, Mover mover, Fire fire, FireHomingLaser fireHomingLaser)
+        public FireState(StateMachine stateMachine, Mover mover, Fire fire, FireHomingLaser fireHomingLaser, Stamina stamina)
         {
             this.stateMachine = stateMachine;
             this.mover = mover;
             this.fire = fire;
             this.fireHomingLaser = fireHomingLaser;
+            this.stamina = stamina;
         }
         public void OnEnter()
         {

@@ -20,6 +20,7 @@ namespace Game.Control
         Fire fire;
         FireHomingLaser fireHomingLaser;
         WallCheck wallCheck;
+        Stamina stamina;
 
         private void Awake()
         {
@@ -45,8 +46,8 @@ namespace Game.Control
 
         private void InitializeStates()
         {
-            stateMachine.RegisterState(new MoveState(stateMachine, wallCheck, mover, charge));
-            stateMachine.RegisterState(new FireState(stateMachine, mover, fire, fireHomingLaser));
+            stateMachine.RegisterState(new MoveState(stateMachine, wallCheck, mover, stamina));
+            stateMachine.RegisterState(new FireState(stateMachine, mover, fire, fireHomingLaser, stamina));
             stateMachine.RegisterState(new IdleState(stateMachine));
             stateMachine.RegisterState(new StopState(stateMachine, stop));
         }
@@ -66,6 +67,7 @@ namespace Game.Control
             fire = GetComponent<Fire>();
             fireHomingLaser = GetComponent<FireHomingLaser>();
             wallCheck = GetComponent<WallCheck>();
+            stamina = GetComponent<Stamina>();
         }
 
         private void OnDisable()
