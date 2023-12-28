@@ -10,12 +10,14 @@ namespace Game.Core
         [SerializeField] float invincibleTime = 1.5f;
         private float currentInvincibleTime = 0f;
         SpriteRenderer spriteRenderer;
+        Color defaultColor;
         public UnityEvent<int, int> OnHealthChanged;
 
         private void Awake()
         {
             TryGetComponent(out spriteRenderer);
             health = maxHealth;
+            defaultColor = spriteRenderer.color;
         }
 
         private void Update()
@@ -46,7 +48,6 @@ namespace Game.Core
         private IEnumerator InvincibleBlink()
         {
             const float blinkColorValue = 0.1f;
-            Color defaultColor = spriteRenderer.color;
             Color blinkColor = new Color(defaultColor.r * blinkColorValue, defaultColor.g * blinkColorValue, defaultColor.b * blinkColorValue);
 
             while (currentInvincibleTime < invincibleTime)
