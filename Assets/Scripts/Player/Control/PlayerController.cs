@@ -46,7 +46,7 @@ namespace Game.Control
 
         private void InitializeStates()
         {
-            stateMachine.RegisterState(new MoveState(stateMachine, wallCheck, mover));
+            stateMachine.RegisterState(new MoveState(stateMachine, wallCheck, mover, stamina));
             stateMachine.RegisterState(new FireState(stateMachine, mover, fire, fireHomingLaser, stamina));
             stateMachine.RegisterState(new IdleState(stateMachine));
             stateMachine.RegisterState(new StopState(stateMachine, stop));

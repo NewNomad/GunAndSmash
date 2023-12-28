@@ -1,3 +1,4 @@
+using Game.Core;
 using UnityEngine;
 namespace Game.Combat
 {
@@ -11,10 +12,12 @@ namespace Game.Combat
         [SerializeField] bool isPlayer = false;
         public bool CanCharge { set => canCharge = value; }
         Rigidbody2D rb;
+        Stamina stamina;
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+            TryGetComponent(out stamina);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -23,6 +26,7 @@ namespace Game.Combat
             if (!other.gameObject.TryGetComponent(out ICharged charged)) { return; }
             Vector2 directionToOther = (other.transform.position - transform.position).normalized;
             charged.OnCharged(directionToOther, damage, knockback, isPlayer);
+            stamina?.RecoverStamina(1000); // TODO: マジックナンバー
         }
     }
 }

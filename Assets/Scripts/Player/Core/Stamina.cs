@@ -25,9 +25,7 @@ namespace Game.Core
             staminaRecoveryTimer += Time.deltaTime;
             if (staminaRecoveryTimer > staminaRecoveryTime)
             {
-                currentStamina += staminaRecoveryAmount;
-                currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
-                staminaRecoveryTimer = 0f;
+                RecoverStamina(staminaRecoveryAmount);
                 staminaUI.SetStaminaPercentage(GetStaminaPercentage());
             }
         }
@@ -62,6 +60,13 @@ namespace Game.Core
         public void SetStamina(int amount)
         {
             currentStamina = amount;
+            currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
+            staminaRecoveryTimer = 0f;
+        }
+
+        public void RecoverStamina(int amount)
+        {
+            currentStamina += amount;
             currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
             staminaRecoveryTimer = 0f;
         }

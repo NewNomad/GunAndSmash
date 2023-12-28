@@ -6616,11 +6616,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172186557239040670, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
       propertyPath: useStaminaOnFire
-      value: 30
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4172186557239040670, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
       propertyPath: useStaminaOnMove
-      value: 100
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 4172186557239040670, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
       propertyPath: staminaRecoveryTime
@@ -6628,7 +6628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4172186557239040670, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
       propertyPath: staminaRecoveryAmount
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4812827781962464487, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
       propertyPath: m_LocalPosition.x
