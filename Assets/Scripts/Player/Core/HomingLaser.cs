@@ -1,3 +1,4 @@
+using Game.Core;
 using UnityEngine;
 
 public class HomingLaser : MonoBehaviour
@@ -5,6 +6,7 @@ public class HomingLaser : MonoBehaviour
     Transform target;
     Vector3 homingVelocity;
     Vector3 homingPosition;
+    [SerializeField] int damage = 10;
     // 寿命
     [SerializeField] float maxLivingTime = 1f;
     float currentLivingTime = 0f;
@@ -34,12 +36,14 @@ public class HomingLaser : MonoBehaviour
         currentLivingTime -= Time.deltaTime;
         if (currentLivingTime < 0f)
         {
+            OnHitTarget();
             DestroyLaser();
         }
         homingVelocity += acceleration * Time.deltaTime;
         homingPosition += homingVelocity * Time.deltaTime;
         transform.position = homingPosition;
     }
+
 
     void DestroyLaser()
     {
@@ -49,5 +53,11 @@ public class HomingLaser : MonoBehaviour
             // Destroy(trailRenderer.gameObject, trailRenderer.time);
         }
         Destroy(gameObject);
+    }
+
+    void OnHitTarget()
+    {
+        if (!target.TryGetComponent(out IDamageable damageable)) { return; }
+        damageable.TakeDamage(damage);
     }
 }
