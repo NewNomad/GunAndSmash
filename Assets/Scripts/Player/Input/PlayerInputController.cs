@@ -23,7 +23,12 @@ public class PlayerInputController : MonoBehaviour
     public UnityEvent onEnhancedFireEvent;
     public UnityEvent<Vector2> onEnhancedMoveEvent;
     public UnityEvent onStop;
+    // カーソル位置取得用のAction
+    private readonly List<RaycastResult> _results = new();
 
+
+    // Selectable以外の対象UIのタグ
+    [SerializeField] private string _uiTag = "InputExclusiveUI";
     PlayerInput input;
     private void Awake()
     {
@@ -55,14 +60,6 @@ public class PlayerInputController : MonoBehaviour
         clickDuration = 0f;
         startClickPos = GetMousePos();
     }
-    // カーソル位置取得用のAction
-    [SerializeField] private InputActionProperty _cursorPositionAction;
-
-    // Selectable以外の対象UIのタグ
-    [SerializeField] private string _uiTag = "InputExclusiveUI";
-
-    private PointerEventData _pointer;
-    private readonly List<RaycastResult> _results = new();
 
     private void OnClickCanceled(InputAction.CallbackContext context)
     {
