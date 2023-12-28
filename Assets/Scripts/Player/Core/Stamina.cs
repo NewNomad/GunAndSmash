@@ -1,3 +1,4 @@
+using Game.UI;
 using UnityEngine;
 namespace Game.Core
 {
@@ -6,10 +7,12 @@ namespace Game.Core
         [SerializeField] int maxStamina = 1000;
         private int currentStamina;
         [SerializeField] float staminaRecoveryTime = 1f;
-        float staminaRecoveryTimer = 0f;
+        float staminaRecoveryTimer = Mathf.Infinity;
         [SerializeField] int staminaRecoveryAmount = 1;
         [SerializeField] int useStaminaOnFire = 1;
         [SerializeField] int useStaminaOnMove = 1;
+        [SerializeField] float staminaTimeOnUse = 1;
+        [SerializeField] StaminaUI staminaUI;
 
 
         private void Awake()
@@ -25,6 +28,7 @@ namespace Game.Core
                 currentStamina += staminaRecoveryAmount;
                 currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
                 staminaRecoveryTimer = 0f;
+                staminaUI.SetStaminaPercentage(GetStaminaPercentage());
             }
         }
 
@@ -32,7 +36,8 @@ namespace Game.Core
         {
             currentStamina -= amount;
             currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
-            staminaRecoveryTimer = 0f;
+            staminaRecoveryTimer = -staminaTimeOnUse;
+            staminaUI.SetStaminaPercentage(GetStaminaPercentage());
         }
 
         public void UseStaminaOnFire()
