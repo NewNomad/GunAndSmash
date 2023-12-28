@@ -46,7 +46,7 @@ namespace Game.Control
 
         private void InitializeStates()
         {
-            stateMachine.RegisterState(new MoveState(stateMachine, wallCheck, mover, stamina));
+            stateMachine.RegisterState(new MoveState(stateMachine, wallCheck, mover));
             stateMachine.RegisterState(new FireState(stateMachine, mover, fire, fireHomingLaser, stamina));
             stateMachine.RegisterState(new IdleState(stateMachine));
             stateMachine.RegisterState(new StopState(stateMachine, stop));
@@ -90,6 +90,8 @@ namespace Game.Control
 
         private void OnMove(Vector2 moveDirection)
         {
+            if (stamina.IsStaminaEmpty()) { return; }
+            stamina.UseStaminaOnMove();
             mover.Move(moveDirection);
             stateMachine.ChangeState(StateID.Move);
         }

@@ -26,6 +26,12 @@ namespace Game.Control
         }
         public void OnEnter()
         {
+            if (stamina.IsStaminaEmpty())
+            {
+                stateMachine.ChangeState(StateID.Idle);
+                return;
+            }
+            stamina.UseStaminaOnFire();
             fire.FireBullet();
             fireHomingLaser.FireHomingLaserAtTarget();
             mover.Move(Vector2.up, onFireMoveSpeed);

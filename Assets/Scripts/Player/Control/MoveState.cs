@@ -11,14 +11,12 @@ namespace Game.Control
         StateMachine stateMachine;
         WallCheck wallCheck;
         Mover mover;
-        Stamina stamina;
         const float moveSpeedOnWall = 0.7f;
-        public MoveState(StateMachine stateMachine, WallCheck wallCheck, Mover mover, Stamina stamina)
+        public MoveState(StateMachine stateMachine, WallCheck wallCheck, Mover mover)
         {
             this.stateMachine = stateMachine;
             this.wallCheck = wallCheck;
             this.mover = mover;
-            this.stamina = stamina;
         }
 
         const float changeMoveStateTime = 1f;

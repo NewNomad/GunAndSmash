@@ -8,6 +8,8 @@ namespace Game.Core
         [SerializeField] float staminaRecoveryTime = 1f;
         float staminaRecoveryTimer = 0f;
         [SerializeField] int staminaRecoveryAmount = 1;
+        [SerializeField] int useStaminaOnFire = 1;
+        [SerializeField] int useStaminaOnMove = 1;
 
 
         private void Awake()
@@ -31,6 +33,16 @@ namespace Game.Core
             currentStamina -= amount;
             currentStamina = Mathf.Clamp(currentStamina, 0, maxStamina);
             staminaRecoveryTimer = 0f;
+        }
+
+        public void UseStaminaOnFire()
+        {
+            UseStamina(useStaminaOnFire);
+        }
+
+        public void UseStaminaOnMove()
+        {
+            UseStamina(useStaminaOnMove);
         }
 
         public float GetStaminaPercentage()
