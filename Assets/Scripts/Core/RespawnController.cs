@@ -79,7 +79,8 @@ namespace Game.Core
         {
             activeEnemies.Remove(enemy);
             totalKills++;
-            countDownTimer.AddTime();
+            const float addTime = 0.5f; // FIXME: マジックナンバー
+            countDownTimer.AddTime(addTime);
         }
 
         public Vector3 GetRespawnPoint()

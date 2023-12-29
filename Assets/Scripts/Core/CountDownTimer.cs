@@ -10,9 +10,20 @@ namespace Game.Core
         [SerializeField] float addTimeOnKill = 0.5f;
         [SerializeField] CountDownUI countDownUI;
         float currentTime = 0f;
+        public static CountDownTimer instance;
 
         private void Awake()
         {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+
+
             currentTime = maxTime;
         }
         private void Update()
@@ -25,11 +36,10 @@ namespace Game.Core
             countDownUI.CurrentTime = currentTime;
         }
 
-        public void AddTime()
+        public void AddTime(float addTime)
         {
-            currentTime += addTimeOnKill;
-            if (currentTime > maxTime) ;
-
+            currentTime += addTime;
+            // if (currentTime > maxTime) currentTime = maxTime;
         }
     }
 }
