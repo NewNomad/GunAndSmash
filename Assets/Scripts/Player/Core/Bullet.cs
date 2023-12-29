@@ -11,6 +11,7 @@ namespace Game.Core
         private float currentLifeTime = 0f;
         Rigidbody2D rb;
         IObjectPool<Bullet> bulletPool;
+        [SerializeField] ParticleSystem hitEffect;
         bool isRelease = false;
         private void Awake()
         {
@@ -33,6 +34,7 @@ namespace Game.Core
         private void DisableThisGameObject()
         {
             if (isRelease) return;
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
             bulletPool.Release(this);
             isRelease = true;
         }
