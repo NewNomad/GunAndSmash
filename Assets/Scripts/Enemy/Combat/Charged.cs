@@ -1,6 +1,7 @@
 using System.Collections;
 using Enemy.Core;
 using Game.Combat;
+using Game.Core;
 using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 namespace Enemy.Combat
@@ -8,11 +9,12 @@ namespace Enemy.Combat
     public class Charged : MonoBehaviour, ICharged
     {
         Rigidbody2D rb;
-        Health health;
+        Enemy.Core.Health health;
         Stun stun;
         Charge charge;
         [SerializeField] float timeToTakeDamage = 1f;
         [SerializeField] ParticleSystem chargedParticles;
+        [SerializeField] float addTimeOnCharged = 1f;
 
         private void Awake()
         {
@@ -30,6 +32,7 @@ namespace Enemy.Combat
             Instantiate(chargedParticles, transform.position, Quaternion.identity);
             SePlayer.Instance.Play("etfx_shoot_lightning2");
             rb.AddForce(direction * knockback, ForceMode2D.Impulse);
+            CountDownTimer.instance.AddTime(1f);
             StartCoroutine(TakeDamageAfterCharged(damage));
         }
 
