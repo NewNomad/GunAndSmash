@@ -4317,6 +4317,7 @@ GameObject:
   - component: {fileID: 646301497}
   - component: {fileID: 646301499}
   - component: {fileID: 646301498}
+  - component: {fileID: 646301500}
   m_Layer: 0
   m_Name: AddCountItem
   m_TagString: Untagged
@@ -4388,7 +4389,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addCount: 60
-  addCountEffect: {fileID: 1072551229}
+--- !u!114 &646301500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646301495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e601292d756bf184ab8133fe4136008d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemEffect: {fileID: 1072551229}
+  destroyEffect: {fileID: 198697674764502320, guid: 2863e3ed5c0c24244b6cdb11a427d74d, type: 3}
 --- !u!1001 &649077975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9287,6 +9301,7 @@ GameObject:
   - component: {fileID: 1681297460}
   - component: {fileID: 1681297461}
   - component: {fileID: 1681297462}
+  - component: {fileID: 1681297463}
   m_Layer: 0
   m_Name: HealItem
   m_TagString: Untagged
@@ -9323,7 +9338,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 2
-  healEffect: {fileID: 1798043625}
 --- !u!58 &1681297462
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9359,6 +9373,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &1681297463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681297459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e601292d756bf184ab8133fe4136008d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemEffect: {fileID: 1798043625}
+  destroyEffect: {fileID: 198697674764502320, guid: 2863e3ed5c0c24244b6cdb11a427d74d, type: 3}
 --- !u!1001 &1710932004
 PrefabInstance:
   m_ObjectHideFlags: 0
