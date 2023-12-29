@@ -11,6 +11,7 @@ public class HomingLaser : MonoBehaviour
     [SerializeField] float maxLivingTime = 1f;
     float currentLivingTime = 0f;
     [SerializeField] TrailRenderer trailRenderer;
+    [SerializeField] ParticleSystem hitEffect;
 
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class HomingLaser : MonoBehaviour
             trailRenderer.transform.parent = null;
             // Destroy(trailRenderer.gameObject, trailRenderer.time);
         }
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

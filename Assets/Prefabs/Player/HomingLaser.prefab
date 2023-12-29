@@ -246,3 +246,4 @@ MonoBehaviour:
   damage: 20
   maxLivingTime: 0.1
   trailRenderer: {fileID: 1902229145460616302}
+  hitEffect: {fileID: 198678818312688868, guid: 63f82fdd6db602d4480c60bfe5026dab, type: 3}
