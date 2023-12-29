@@ -6,6 +6,8 @@ public class SimulationController : MonoBehaviour
 {
     [SerializeField] int maxStep;
     [SerializeField] LineRenderer lineRenderer;
+    [SerializeField] ParticleSystem OnClickPositionParticles;
+    ParticleSystem currentClickPositionParticles;
     bool isPlayerMayMove = false;
     Vector2 moveVector = Vector2.zero;
 
@@ -16,12 +18,19 @@ public class SimulationController : MonoBehaviour
     private void FixedUpdate()
     {
         (isPlayerMayMove, moveVector) = PlayerController.instance.GetComponent<PlayerInputController>().GetIsPlayerMayMoveAndDirection();
+        handlePredictionLine();
+        handleParticleOnClickPosition();
+    }
+
+    private void handlePredictionLine()
+    {
         if (!isPlayerMayMove)
         {
             lineRenderer.enabled = false;
             return;
         }
         lineRenderer.enabled = true;
+        print(isPlayerMayMove);
         DrawPredictionLine();
     }
 
@@ -42,7 +51,32 @@ public class SimulationController : MonoBehaviour
             Vector2 nextPosition = currentPosition + currentVelocity * time + gravityEffect;
             lineRenderer.SetPosition(i, nextPosition);
         }
-
     }
 
+    private void handleParticleOnClickPosition()
+    {
+        if (isPlayerMayMove)
+        {
+            SetParticleOnClickPosition();
+            return;
+        }
+        DestroyParticleOnClickPosition();
+    }
+
+    private void SetParticleOnClickPosition()
+    {
+        if (currentClickPositionParticles != null) return;
+        currentClickPositionParticles = Instantiate(OnClickPositionParticles, Vector3.zero, Quaternion.identity);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0;
+        currentClickPositionParticles.transform.position = mousePosition;
+    }
+    private void DestroyParticleOnClickPosition()
+    {
+        print("destroy");
+        if (currentClickPositionParticles != null)
+        {
+            Destroy(currentClickPositionParticles.gameObject);
+        }
+    }
 }
