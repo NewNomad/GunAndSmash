@@ -24,9 +24,7 @@ namespace Game.Move
             rb.AddForce(moveDirection * moveSpeed, ForceMode2D.Impulse);
         }
 
-        public bool IsMovingLeft()
-        {
-            return rb.velocity.x < 0;
-        }
+        public bool IsMovingLeft() => rb.velocity.x < 0;
+        public float GetMoveSpeed() => moveSpeed;
     }
 }

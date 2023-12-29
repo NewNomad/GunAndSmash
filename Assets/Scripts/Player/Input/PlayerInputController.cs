@@ -27,7 +27,7 @@ public class PlayerInputController : MonoBehaviour
     private readonly List<RaycastResult> _results = new();
     private bool isClicked = false;
     private bool isPlayerMayMove = false;
-    public UnityEvent<bool> onPlayerMayMove;
+    public UnityEvent<bool, Vector2> onPlayerMayMove;
 
 
     // Selectable以外の対象UIのタグ
@@ -55,11 +55,12 @@ public class PlayerInputController : MonoBehaviour
         clickDuration += Time.deltaTime;
 
         // 予測線にイベントを発行する
-        if (IsClickedDistanceMoreThanMoveDistance() != isPlayerMayMove)
-        {
-            isPlayerMayMove = IsClickedDistanceMoreThanMoveDistance();
-            onPlayerMayMove.Invoke(isPlayerMayMove);
-        }
+        // if (IsClickedDistanceMoreThanMoveDistance() != isPlayerMayMove)
+        // {
+        isPlayerMayMove = IsClickedDistanceMoreThanMoveDistance();
+        Vector2 direction = (startClickPos - GetMousePos()).normalized;
+        onPlayerMayMove.Invoke(isPlayerMayMove, direction);
+        // }
     }
 
     private void OnClick(InputAction.CallbackContext context)
@@ -74,7 +75,6 @@ public class PlayerInputController : MonoBehaviour
 
     private void OnClickCanceled(InputAction.CallbackContext context)
     {
-        if (!isClicked) return;
         isClicked = false;
         if (IsPointerOverSelectable()) return;
 
@@ -143,7 +143,6 @@ public class PlayerInputController : MonoBehaviour
         for (var i = 0; i < _results.Count; i++)
         {
             GameObject uiObj = _results[i].gameObject;
-            Debug.Log(uiObj.name);
 
             if (uiObj.CompareTag(_uiTag))
                 return true;
@@ -164,5 +163,17 @@ public class PlayerInputController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public (bool IsClickedDistanceMoreThanMoveDistance, Vector2 direction) GetClickedDistanceAndDirection()
+    {
+        if (!isClicked) return (false, Vector2.zero);
+        float distance = Vector2.Distance(startClickPos, GetMousePos());
+        Vector2 direction = (startClickPos - GetMousePos()).normalized;
+        if (distance > enableMoveDistance)
+        {
+            return (true, direction);
+        }
+        return (false, Vector2.zero);
     }
 }
