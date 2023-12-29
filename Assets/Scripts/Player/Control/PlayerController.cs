@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Game.Combat;
 using Game.Core;
 using Game.Move;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 
 namespace Game.Control
@@ -90,7 +91,11 @@ namespace Game.Control
 
         private void OnMove(Vector2 moveDirection)
         {
-            if (stamina.IsStaminaEmpty()) { return; }
+            if (stamina.IsStaminaEmpty())
+            {
+                SePlayer.Instance.Play("cancel_maou");
+                return;
+            }
             stamina.UseStaminaOnMove();
             mover.Move(moveDirection);
             stateMachine.ChangeState(StateID.Move);

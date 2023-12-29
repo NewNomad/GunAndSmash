@@ -1004,6 +1004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialEnemy_3
       objectReference: {fileID: 0}
+    - target: {fileID: 2261672748918612575, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 198678818312688868, guid: 63f82fdd6db602d4480c60bfe5026dab, type: 3}
     - target: {fileID: 4261935318135809496, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: FirePrevParticle
       value: 
@@ -4843,6 +4847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2261672748918612575, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 198678818312688868, guid: 63f82fdd6db602d4480c60bfe5026dab, type: 3}
     - target: {fileID: 4261935318135809496, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: FirePrevParticle
       value: 
@@ -4912,6 +4920,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialEnemy_2
       objectReference: {fileID: 0}
+    - target: {fileID: 2261672748918612575, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 198678818312688868, guid: 63f82fdd6db602d4480c60bfe5026dab, type: 3}
     - target: {fileID: 4261935318135809496, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: FirePrevParticle
       value: 
@@ -6486,7 +6498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5917604986509176631, guid: fb9042acf9b6c402ca5af41fd9c4d09b, type: 3}
       propertyPath: SeList.Array.size
-      value: 58
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 5917604986509176631, guid: fb9042acf9b6c402ca5af41fd9c4d09b, type: 3}
       propertyPath: SeList.Array.data[0]
@@ -6720,6 +6732,10 @@ PrefabInstance:
       propertyPath: SeList.Array.data[57]
       value: 
       objectReference: {fileID: 8300000, guid: 0bab18109cc0d434fa35ed3a525ef1e2, type: 3}
+    - target: {fileID: 5917604986509176631, guid: fb9042acf9b6c402ca5af41fd9c4d09b, type: 3}
+      propertyPath: SeList.Array.data[58]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3eb003f5c570b1a4aac6a4a7a45c985a, type: 3}
     - target: {fileID: 5917604986509176631, guid: fb9042acf9b6c402ca5af41fd9c4d09b, type: 3}
       propertyPath: DontDestroyOnLoadOnAwake
       value: 1
@@ -7022,6 +7038,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialEnemy_1
       objectReference: {fileID: 0}
+    - target: {fileID: 2261672748918612575, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 198678818312688868, guid: 63f82fdd6db602d4480c60bfe5026dab, type: 3}
     - target: {fileID: 4261935318135809496, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: FirePrevParticle
       value: 
