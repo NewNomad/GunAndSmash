@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Control;
 using Game.Core;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 namespace Game.Core
 {
@@ -72,6 +73,7 @@ namespace Game.Core
             if (respawnParticles != null)
             {
                 Instantiate(respawnParticles, position, Quaternion.identity);
+                SePlayer.Instance.Play("etfx_shoot_magic");
             }
         }
 
@@ -111,6 +113,7 @@ namespace Game.Core
                     if (respawnParticles != null)
                     {
                         Instantiate(respawnParticles, enemy.transform.position, Quaternion.identity);
+                        SePlayer.Instance.Play("etfx_shoot_magic");
                     }
                     yield return new WaitForSeconds(respawnEnemiesTime);
                 }

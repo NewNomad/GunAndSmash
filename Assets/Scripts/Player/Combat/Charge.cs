@@ -1,4 +1,5 @@
 using Game.Core;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 namespace Game.Combat
 {
@@ -30,6 +31,7 @@ namespace Game.Combat
 
             var hitPosition = other.collider.ClosestPoint(transform.position);
             Instantiate(hitEffect, hitPosition, Quaternion.identity);
+            SePlayer.Instance.Play("etfx_impact_metal02");
             stamina?.RecoverStamina(450); // TODO: マジックナンバー
         }
     }

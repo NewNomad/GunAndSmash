@@ -1,6 +1,7 @@
 using System.Collections;
 using Enemy.Core;
 using Game.Control;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -45,7 +46,6 @@ namespace Enemy.Combat
         // TODO: リファクタリング1
         public void FireBulletToPlayer()
         {
-            Debug.Log("FireBulletToPlayer");
             if (PlayerController.instance == null) return;
             Vector2 PlayerDirection = PlayerController.instance.transform.position - transform.position;
             float FirstAngle = Mathf.Atan2(PlayerDirection.y, PlayerDirection.x) * Mathf.Rad2Deg;
@@ -84,6 +84,7 @@ namespace Enemy.Combat
         public void FireBehaviors()
         {
             // TODO: SE
+            SePlayer.Instance.Play("etfx_shoot_energy04");
             StartCoroutine(FireBullets());
         }
         IEnumerator FireBullets()

@@ -1,4 +1,5 @@
 using Game.Core;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -36,6 +37,7 @@ namespace Enemy.Core
                 canHealStun = false;
                 onStunned.Invoke();
                 Instantiate(stunParticles, transform.position, Quaternion.identity);
+                SePlayer.Instance.Play("etfx_explosion_plasma");
                 HitStopController.Instance.HitStop();
             }
             if (health <= 0)
@@ -55,6 +57,7 @@ namespace Enemy.Core
         private void Dead()
         {
             OnDead.Invoke(this.gameObject);
+            SePlayer.Instance.Play("etfx_explosion_nuke");
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

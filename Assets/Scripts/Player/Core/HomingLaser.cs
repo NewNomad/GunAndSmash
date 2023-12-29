@@ -1,4 +1,5 @@
 using Game.Core;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 
 public class HomingLaser : MonoBehaviour
@@ -54,6 +55,7 @@ public class HomingLaser : MonoBehaviour
             // Destroy(trailRenderer.gameObject, trailRenderer.time);
         }
         Instantiate(hitEffect, transform.position, Quaternion.identity);
+        SePlayer.Instance.Play("etfx_explosion_laser");
         Destroy(gameObject);
     }
 

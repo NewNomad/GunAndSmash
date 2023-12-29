@@ -1,6 +1,7 @@
 using System.Collections;
 using Enemy.Core;
 using Game.Combat;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 namespace Enemy.Combat
 {
@@ -27,6 +28,7 @@ namespace Enemy.Combat
             if (isPlayer && !stun.IsStun) { return; }
             HitStopController.Instance.HitStop();
             Instantiate(chargedParticles, transform.position, Quaternion.identity);
+            SePlayer.Instance.Play("etfx_shoot_lightning2");
             rb.AddForce(direction * knockback, ForceMode2D.Impulse);
             StartCoroutine(TakeDamageAfterCharged(damage));
         }

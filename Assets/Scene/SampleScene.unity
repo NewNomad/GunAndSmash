@@ -6436,6 +6436,14 @@ PrefabInstance:
       propertyPath: Slider
       value: 
       objectReference: {fileID: 2083965426}
+    - target: {fileID: 5917604986509176628, guid: fb9042acf9b6c402ca5af41fd9c4d09b, type: 3}
+      propertyPath: CurrentVolume.value
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5917604986509176628, guid: fb9042acf9b6c402ca5af41fd9c4d09b, type: 3}
+      propertyPath: PlaySeOnVolumeChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5917604986509176630, guid: fb9042acf9b6c402ca5af41fd9c4d09b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.3966137
@@ -6707,11 +6715,15 @@ PrefabInstance:
     - target: {fileID: 5917604986509176631, guid: fb9042acf9b6c402ca5af41fd9c4d09b, type: 3}
       propertyPath: SeList.Array.data[56]
       value: 
-      objectReference: {fileID: 8300000, guid: c922c34f559ead440a273a13a924cfc7, type: 3}
+      objectReference: {fileID: 8300000, guid: 38d95e38f52f6a54b888d9fd555fa1e3, type: 3}
     - target: {fileID: 5917604986509176631, guid: fb9042acf9b6c402ca5af41fd9c4d09b, type: 3}
       propertyPath: SeList.Array.data[57]
       value: 
-      objectReference: {fileID: 8300000, guid: 38d95e38f52f6a54b888d9fd555fa1e3, type: 3}
+      objectReference: {fileID: 8300000, guid: 0bab18109cc0d434fa35ed3a525ef1e2, type: 3}
+    - target: {fileID: 5917604986509176631, guid: fb9042acf9b6c402ca5af41fd9c4d09b, type: 3}
+      propertyPath: DontDestroyOnLoadOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

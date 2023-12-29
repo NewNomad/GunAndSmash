@@ -1,3 +1,4 @@
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -34,6 +35,7 @@ namespace Game.Core
         private void DisableThisGameObject()
         {
             if (isRelease) return;
+            SePlayer.Instance.Play("etfx_explosion_bullet");
             Instantiate(hitEffect, transform.position, Quaternion.identity);
             bulletPool.Release(this);
             isRelease = true;

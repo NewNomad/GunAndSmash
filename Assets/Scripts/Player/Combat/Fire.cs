@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Game.Core;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -44,6 +45,8 @@ namespace Game.Combat
 
         private void FireTo(Vector2 direction)
         {
+            SePlayer.Instance.Play("etfx_shoot_pistol02");
+
             Bullet bullet = bulletPool.Get();
             bullet.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
             bullet.Launch();
