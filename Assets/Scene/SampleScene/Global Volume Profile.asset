@@ -76,7 +76,7 @@ MonoBehaviour:
     m_Value: 7
   bloomIntensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.3
   allowLensSurface:
     m_OverrideState: 1
     m_Value: 1
@@ -103,7 +103,7 @@ MonoBehaviour:
     m_Value: 10
   lensFlareGhostIntensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.7
   lensFlareThreshold:
     m_OverrideState: 0
     m_Value:
@@ -129,7 +129,7 @@ MonoBehaviour:
     m_Value: 2
   lensFlareHaloIntensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.7
   lensFlareHaloSize:
     m_OverrideState: 0
     m_Value: 0.4
