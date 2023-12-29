@@ -170,8 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   distanceToPlayer: 8
-  maxChangeStateDuration: 4
-  minChangeStateDuration: 7
+  maxChangeStateDuration: 7
+  minChangeStateDuration: 5
 --- !u!114 &4565105445338355560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0987ee0e7da87a4d957dda90439a8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 620
-  stunMaxHealth: 180
+  maxHealth: 760
+  stunMaxHealth: 320
   stunParticles: {fileID: 19878032, guid: e37a3705b2e393e498b22437463251d2, type: 3}
   deathParticles: {fileID: 19813802, guid: 2363a105a77b13c4491f02a253f86bd3, type: 3}
   onStunned:

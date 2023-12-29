@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4293933119532900635}
   - component: {fileID: 2261672748918612575}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyBIG
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,8 +37,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.3037101, y: -1.0354517, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 3.3333333}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -168,10 +168,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6069467dda5de64e8543706c121105b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  distanceToPlayer: 8
+  moveSpeed: 4
+  distanceToPlayer: 10
   maxChangeStateDuration: 7
-  minChangeStateDuration: 4
+  minChangeStateDuration: 6
 --- !u!114 &4565105445338355560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0987ee0e7da87a4d957dda90439a8cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 620
-  stunMaxHealth: 180
+  maxHealth: 2000
+  stunMaxHealth: 680
   stunParticles: {fileID: 19878032, guid: e37a3705b2e393e498b22437463251d2, type: 3}
   deathParticles: {fileID: 19813802, guid: 2363a105a77b13c4491f02a253f86bd3, type: 3}
   onStunned:
@@ -232,10 +232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b9b59f0b7c2ca419bc11c3307abfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireInterval: 0.5
-  FireCount: 3
+  FireInterval: 0.7
+  FireCount: 5
   BulletInterval: 50
-  BulletCount: 3
+  BulletCount: 5
   bulletPrefab: {fileID: -876918792236209408, guid: cd31944301414ab42b28d49050007f91, type: 3}
   fireType: 0
   FirePrevParticle: {fileID: 19888532, guid: 7fef8287b742b4140a90aa3e08b617a8, type: 3}
