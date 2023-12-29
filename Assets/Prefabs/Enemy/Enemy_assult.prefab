@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4293933119532900635}
   - component: {fileID: 2261672748918612575}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy_assult
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
-  m_Color: {r: 1, g: 0.65579164, b: 0, a: 1}
+  m_Sprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
+  m_Color: {r: 1, g: 0.24696931, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -232,10 +232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b9b59f0b7c2ca419bc11c3307abfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireInterval: 0.5
-  FireCount: 3
+  FireInterval: 0.1
+  FireCount: 7
   BulletInterval: 50
-  BulletCount: 3
+  BulletCount: 1
   bulletPrefab: {fileID: -876918792236209408, guid: cd31944301414ab42b28d49050007f91, type: 3}
   fireType: 0
   FirePrevParticle: {fileID: 19888532, guid: 7fef8287b742b4140a90aa3e08b617a8, type: 3}

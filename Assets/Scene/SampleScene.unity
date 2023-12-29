@@ -5360,8 +5360,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypes:
   - enemyPrefab: {fileID: 241902066785523550, guid: 0c7e57b08a3b3ba409a8410ed1e3d8bf, type: 3}
-    spawnProbability: 10
+    spawnProbability: 4
     requireKillCount: 0
+  - enemyPrefab: {fileID: 241902066785523550, guid: b291109cae16d7a4585e7f184794d632, type: 3}
+    spawnProbability: 2
+    requireKillCount: 20
+  - enemyPrefab: {fileID: 241902066785523550, guid: 7ad96aa0bbeec984b95f61b54b00ec5d, type: 3}
+    spawnProbability: 2
+    requireKillCount: 40
+  - enemyPrefab: {fileID: 241902066785523550, guid: 9628141983d4ddf488ef5e2d8455b1bb, type: 3}
+    spawnProbability: 8
+    requireKillCount: 60
   maxEnemies: 15
   maxSpawnEnemiesCount: 3
   respawnInterval: 8
@@ -9256,9 +9265,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 743167754966638919, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
+      propertyPath: maxHealth
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 743167754966638919, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
       propertyPath: deathParticles
       value: 
       objectReference: {fileID: 198539649656469824, guid: 42312709dfe653249a4c0e0e56be7af0, type: 3}
+    - target: {fileID: 743167754966638919, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
+      propertyPath: invincibleTime
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 743167754966638919, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
       propertyPath: takeDamageParticles
       value: 
@@ -9307,6 +9324,10 @@ PrefabInstance:
       propertyPath: hitEffect
       value: 
       objectReference: {fileID: 19832174, guid: 734cf1d292b882f499813138d614cf68, type: 3}
+    - target: {fileID: 6620637198404987840, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
+      propertyPath: OnClickPositionParticles
+      value: 
+      objectReference: {fileID: 19876738, guid: f6bfc764d77027840aa8922c9a004d87, type: 3}
     - target: {fileID: 6937431891679069787, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
       propertyPath: m_Name
       value: Player
