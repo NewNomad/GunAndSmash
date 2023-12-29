@@ -26,7 +26,7 @@ namespace Game.Combat
             if (!other.gameObject.TryGetComponent(out ICharged charged)) { return; }
             Vector2 directionToOther = (other.transform.position - transform.position).normalized;
             charged.OnCharged(directionToOther, damage, knockback, isPlayer);
-            stamina?.RecoverStamina(1000); // TODO: マジックナンバー
+            stamina?.RecoverStamina(450); // TODO: マジックナンバー
         }
     }
 }
