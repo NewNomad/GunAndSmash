@@ -1,3 +1,5 @@
+using Game.Control;
+using Game.Core;
 using UnityEngine;
 namespace Game.Item
 {
@@ -6,8 +8,8 @@ namespace Game.Item
         [SerializeField] int healAmount = 100;
         public void UseItem()
         {
-            Debug.Log("HealItem used");
+            PlayerController.instance.TryGetComponent(out Health health);
+            health.Heal(healAmount);
         }
-        public int HealAmount { get => healAmount; }
     }
 }

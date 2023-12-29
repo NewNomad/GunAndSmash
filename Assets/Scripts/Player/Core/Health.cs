@@ -60,5 +60,11 @@ namespace Game.Core
             spriteRenderer.color = defaultColor;
             yield return null;
         }
+
+        public void Heal(int healAmount)
+        {
+            health = Mathf.Min(health + healAmount, maxHealth);
+            OnHealthChanged.Invoke(health, maxHealth);
+        }
     }
 }
