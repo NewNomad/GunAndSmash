@@ -238,6 +238,7 @@ MonoBehaviour:
   BulletCount: 3
   bulletPrefab: {fileID: -876918792236209408, guid: cd31944301414ab42b28d49050007f91, type: 3}
   fireType: 0
+  FirePrevParticle: {fileID: 19888532, guid: 7fef8287b742b4140a90aa3e08b617a8, type: 3}
 --- !u!114 &3181382854341667512
 MonoBehaviour:
   m_ObjectHideFlags: 0

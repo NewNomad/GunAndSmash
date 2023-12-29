@@ -1004,6 +1004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialEnemy_3
       objectReference: {fileID: 0}
+    - target: {fileID: 4261935318135809496, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: FirePrevParticle
+      value: 
+      objectReference: {fileID: 19888532, guid: 7fef8287b742b4140a90aa3e08b617a8, type: 3}
     - target: {fileID: 4578711177515990609, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.1
@@ -1043,6 +1047,14 @@ PrefabInstance:
     - target: {fileID: 4578711177515990609, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387268746485511988, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: maxChangeStateDuration
+      value: 9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387268746485511988, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: minChangeStateDuration
+      value: 9999999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4831,6 +4843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4261935318135809496, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: FirePrevParticle
+      value: 
+      objectReference: {fileID: 19888532, guid: 7fef8287b742b4140a90aa3e08b617a8, type: 3}
     - target: {fileID: 4578711177515990609, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.106552
@@ -4871,6 +4887,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6387268746485511988, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: maxChangeStateDuration
+      value: 9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387268746485511988, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: minChangeStateDuration
+      value: 9999999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4888,6 +4912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialEnemy_2
       objectReference: {fileID: 0}
+    - target: {fileID: 4261935318135809496, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: FirePrevParticle
+      value: 
+      objectReference: {fileID: 19888532, guid: 7fef8287b742b4140a90aa3e08b617a8, type: 3}
     - target: {fileID: 4578711177515990609, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: m_LocalPosition.x
       value: -67.46344
@@ -4927,6 +4955,14 @@ PrefabInstance:
     - target: {fileID: 4578711177515990609, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387268746485511988, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: maxChangeStateDuration
+      value: 9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387268746485511988, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: minChangeStateDuration
+      value: 9999999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6731,6 +6767,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialEnemy_1
       objectReference: {fileID: 0}
+    - target: {fileID: 4261935318135809496, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: FirePrevParticle
+      value: 
+      objectReference: {fileID: 19888532, guid: 7fef8287b742b4140a90aa3e08b617a8, type: 3}
     - target: {fileID: 4578711177515990609, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: m_LocalPosition.x
       value: -33.75345
@@ -6770,6 +6810,14 @@ PrefabInstance:
     - target: {fileID: 4578711177515990609, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387268746485511988, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: maxChangeStateDuration
+      value: 9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387268746485511988, guid: 69a507eff49554547a9ef9c00ee99065, type: 3}
+      propertyPath: minChangeStateDuration
+      value: 9999999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

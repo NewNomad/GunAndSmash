@@ -23,6 +23,7 @@ namespace Enemy.Combat
         readonly int maxBullets = 300;
         bool isFireState = false;
         public bool IsFireState { get => isFireState; set => isFireState = value; }
+        [SerializeField] ParticleSystem FirePrevParticle;
 
         private void Awake()
         {
@@ -89,7 +90,8 @@ namespace Enemy.Combat
         {
             isFireState = true;
             // クールダウンタイマー
-            const float waitTime = 0.5f;
+            Instantiate(FirePrevParticle, transform.position, Quaternion.identity);
+            const float waitTime = 1.5f;
             yield return new WaitForSeconds(waitTime);
             for (int i = 0; i < FireCount; i++)
             {
