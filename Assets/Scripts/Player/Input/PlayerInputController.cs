@@ -26,7 +26,8 @@ public class PlayerInputController : MonoBehaviour
     // カーソル位置取得用のAction
     private readonly List<RaycastResult> _results = new();
     private bool isClicked = false;
-    public UnityEvent<bool> isPlayerMayMove;
+    private bool isPlayerMayMove = false;
+    public UnityEvent<bool> onPlayerMayMove;
 
 
     // Selectable以外の対象UIのタグ
@@ -54,13 +55,10 @@ public class PlayerInputController : MonoBehaviour
         clickDuration += Time.deltaTime;
 
         // 予測線にイベントを発行する
-        if (IsClickedDistanceMoreThanMoveDistance())
+        if (IsClickedDistanceMoreThanMoveDistance() != isPlayerMayMove)
         {
-            isPlayerMayMove.Invoke(true);
-        }
-        else
-        {
-            isPlayerMayMove.Invoke(false);
+            isPlayerMayMove = IsClickedDistanceMoreThanMoveDistance();
+            onPlayerMayMove.Invoke(isPlayerMayMove);
         }
     }
 
@@ -159,6 +157,7 @@ public class PlayerInputController : MonoBehaviour
     // マウスクリックした地点から今のマウス位置までの距離を取得する
     public bool IsClickedDistanceMoreThanMoveDistance()
     {
+        if (!isClicked) return false;
         float distance = Vector2.Distance(startClickPos, GetMousePos());
         if (distance > enableMoveDistance)
         {

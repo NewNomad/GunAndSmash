@@ -8,15 +8,26 @@ public class SimulationController : MonoBehaviour
     [SerializeField] LineRenderer lineRenderer;
     List<Vector3> renderLinePoints = new List<Vector3>();
 
+    bool isPlayerMayMove = false;
+
     private void Start()
     {
-        // lineRenderer.transform.position = Vector3.zero;
-    }
+        PlayerController.instance.GetComponent<PlayerInputController>().onPlayerMayMove.AddListener(OnPlayerMayMove);
 
+    }
     private void FixedUpdate()
     {
+        Debug.Log(isPlayerMayMove);
+        if (!isPlayerMayMove)
+        {
+            lineRenderer.enabled = false;
+            return;
+        }
+        lineRenderer.enabled = true;
         DrawPredictionLine(PlayerController.instance.transform.position, transform.right * 1);
     }
+
+    void OnPlayerMayMove(bool isPlayerMayMove) => this.isPlayerMayMove = isPlayerMayMove;
 
     private void DrawPredictionLine(Vector2 basePosition, Vector2 fireVector)
     {
