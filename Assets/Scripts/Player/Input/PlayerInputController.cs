@@ -135,8 +135,8 @@ public class PlayerInputController : MonoBehaviour
             if (uiObj.CompareTag(_uiTag))
                 return true;
 
-            if (uiObj.GetComponent<Selectable>() != null)
-                return true;
+            // if (uiObj.GetComponent<Selectable>() != null)
+            //     return true;
         }
         return false;
     }
