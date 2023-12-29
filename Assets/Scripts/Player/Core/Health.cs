@@ -1,4 +1,5 @@
 using System.Collections;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 using UnityEngine.Events;
 namespace Game.Core
@@ -12,6 +13,8 @@ namespace Game.Core
         SpriteRenderer spriteRenderer;
         Color defaultColor;
         public UnityEvent<int, int> OnHealthChanged;
+        [SerializeField] ParticleSystem takeDamageParticles;
+        [SerializeField] ParticleSystem deathParticles;
 
         private void Awake()
         {
@@ -29,6 +32,8 @@ namespace Game.Core
         {
             if (currentInvincibleTime < invincibleTime) return;
             HitStopController.Instance.HitStop();
+            SePlayer.Instance.Play("etfx_explosion_dark01");
+            Instantiate(takeDamageParticles, transform.position, Quaternion.identity);
             currentInvincibleTime = 0f;
             health -= damage;
             OnHealthChanged.Invoke(health, maxHealth);
