@@ -26,9 +26,6 @@ public class PlayerInputController : MonoBehaviour
     // カーソル位置取得用のAction
     private readonly List<RaycastResult> _results = new();
     private bool isClicked = false;
-    private bool isPlayerMayMove = false;
-    public UnityEvent<bool, Vector2> onPlayerMayMove;
-
 
     // Selectable以外の対象UIのタグ
     [SerializeField] private string _uiTag = "InputExclusiveUI";
@@ -53,14 +50,6 @@ public class PlayerInputController : MonoBehaviour
     {
         // if (clickDuration < 0) return;
         clickDuration += Time.deltaTime;
-
-        // 予測線にイベントを発行する
-        // if (IsClickedDistanceMoreThanMoveDistance() != isPlayerMayMove)
-        // {
-        isPlayerMayMove = IsClickedDistanceMoreThanMoveDistance();
-        Vector2 direction = (startClickPos - GetMousePos()).normalized;
-        onPlayerMayMove.Invoke(isPlayerMayMove, direction);
-        // }
     }
 
     private void OnClick(InputAction.CallbackContext context)
@@ -165,7 +154,7 @@ public class PlayerInputController : MonoBehaviour
         return false;
     }
 
-    public (bool IsClickedDistanceMoreThanMoveDistance, Vector2 direction) GetClickedDistanceAndDirection()
+    public (bool isPlayerMayMove, Vector2 direction) GetIsPlayerMayMoveAndDirection()
     {
         if (!isClicked) return (false, Vector2.zero);
         float distance = Vector2.Distance(startClickPos, GetMousePos());
@@ -175,5 +164,6 @@ public class PlayerInputController : MonoBehaviour
             return (true, direction);
         }
         return (false, Vector2.zero);
+
     }
 }

@@ -8875,7 +8875,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0.48235294}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -10214,7 +10214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6620637198404987840, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
       propertyPath: maxStep
-      value: 40
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6620637198404987840, guid: e183fdc8f6d26714e9e9e1b29a875fda, type: 3}
       propertyPath: lineRenderer

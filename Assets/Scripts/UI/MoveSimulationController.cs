@@ -13,25 +13,18 @@ public class SimulationController : MonoBehaviour
 
     private void Start()
     {
-        PlayerController.instance.GetComponent<PlayerInputController>().onPlayerMayMove.AddListener(OnPlayerMayMove);
-
+        var a = PlayerController.instance.GetComponent<PlayerInputController>().GetIsPlayerMayMoveAndDirection();
     }
     private void FixedUpdate()
     {
-        Debug.Log(isPlayerMayMove);
-        // if (!isPlayerMayMove)
-        // {
-        //     lineRenderer.enabled = false;
-        //     return;
-        // }
-        // lineRenderer.enabled = true;
+        (isPlayerMayMove, moveVector) = PlayerController.instance.GetComponent<PlayerInputController>().GetIsPlayerMayMoveAndDirection();
+        if (!isPlayerMayMove)
+        {
+            lineRenderer.enabled = false;
+            return;
+        }
+        lineRenderer.enabled = true;
         DrawPredictionLine();
-    }
-
-    void OnPlayerMayMove(bool isPlayerMayMove, Vector2 direction)
-    {
-        this.isPlayerMayMove = isPlayerMayMove;
-        moveVector = direction;
     }
 
     private void DrawPredictionLine()
@@ -39,16 +32,17 @@ public class SimulationController : MonoBehaviour
         lineRenderer.transform.position = Vector3.zero;
         Rigidbody2D playerRigidbody = PlayerController.instance.GetComponent<Rigidbody2D>();
         Vector2 currentPosition = playerRigidbody.position;
-        Vector2 gravity = playerRigidbody.gravityScale * Physics2D.gravity;
-        float moveSpeed = PlayerController.instance.GetComponent<Mover>().GetMoveSpeed();
+        Vector2 currentVelocity = moveVector * PlayerController.instance.GetComponent<Mover>().GetMoveSpeed();
+        Vector2 gravity = Physics2D.gravity;
 
         lineRenderer.positionCount = maxStep;
 
         for (int i = 0; i < maxStep; i++)
         {
             float time = i * Time.fixedDeltaTime;
-            Vector2 predictedPosition = currentPosition + moveVector * time + moveSpeed * gravity * time * time;
-            lineRenderer.SetPosition(i, predictedPosition);
+            Vector2 gravityEffect = 0.5f * gravity * time * time;
+            Vector2 nextPosition = currentPosition + currentVelocity * time + gravityEffect;
+            lineRenderer.SetPosition(i, nextPosition);
         }
 
     }
