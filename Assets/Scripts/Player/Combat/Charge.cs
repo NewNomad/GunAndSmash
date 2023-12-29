@@ -13,6 +13,7 @@ namespace Game.Combat
         public bool CanCharge { set => canCharge = value; }
         Rigidbody2D rb;
         Stamina stamina;
+        [SerializeField] ParticleSystem hitEffect;
 
         private void Awake()
         {
@@ -26,6 +27,9 @@ namespace Game.Combat
             if (!other.gameObject.TryGetComponent(out ICharged charged)) { return; }
             Vector2 directionToOther = (other.transform.position - transform.position).normalized;
             charged.OnCharged(directionToOther, damage, knockback, isPlayer);
+
+            var hitPosition = other.collider.ClosestPoint(transform.position);
+            Instantiate(hitEffect, hitPosition, Quaternion.identity);
             stamina?.RecoverStamina(450); // TODO: マジックナンバー
         }
     }

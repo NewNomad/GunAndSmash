@@ -283,3 +283,4 @@ MonoBehaviour:
   knockback: 100
   canCharge: 0
   isPlayer: 0
+  hitEffect: {fileID: 19832174, guid: 734cf1d292b882f499813138d614cf68, type: 3}
