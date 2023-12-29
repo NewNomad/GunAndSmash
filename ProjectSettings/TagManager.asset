@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - bullet
   - InputExclusiveUI
+  - MainUI
   layers:
   - Default
   - TransparentFX

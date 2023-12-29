@@ -12,19 +12,28 @@ namespace Game.UI
         [SerializeField] float fadeOutDuration = 1.0f; // フェードアウトの持続時間
         [SerializeField] Vector3 scrollOffset = new Vector3(0, 50f, 0); // 上に移動する距離
 
-        [SerializeField] TextMeshProUGUI flickerText;
+        TextMeshProUGUI flickerText;
 
-        private void Start()
+        private void Awake()
         {
+            flickerText = GetComponent<TextMeshProUGUI>();
+            flickerText.rectTransform.position = new Vector3(0, -200f, 0);
+
+        }
+
+        public void Initiate(float addTime)
+        {
+            flickerText.text = $"+{addTime:F1}s";
             StartCoroutine(FlickerAndScrollTextRoutine());
         }
 
         private IEnumerator FlickerAndScrollTextRoutine()
         {
-            Vector3 initialPosition = flickerText.transform.position;
-            Vector3 targetPosition = initialPosition + scrollOffset;
+            RectTransform rectTransform = flickerText.rectTransform;
+            Vector2 initialPosition = rectTransform.anchoredPosition;
+            Vector2 targetPosition = initialPosition + new Vector2(scrollOffset.x, scrollOffset.y);
 
-            flickerText.transform.DOMove(targetPosition, scrollDuration).SetEase(Ease.OutQuad);
+            rectTransform.DOAnchorPos(targetPosition, scrollDuration).SetEase(Ease.OutQuad);
 
             Sequence sequence = DOTween.Sequence();
 
@@ -35,7 +44,7 @@ namespace Game.UI
             }
 
             sequence.Append(flickerText.DOFade(1f, maxFlickerDuration));
-            sequence.Append(flickerText.DOFade(0f, fadeOutDuration));
+            sequence.Append(flickerText.DOFade(0f, fadeOutDuration)).OnComplete(() => Destroy(gameObject));
 
             yield return sequence.WaitForCompletion();
         }

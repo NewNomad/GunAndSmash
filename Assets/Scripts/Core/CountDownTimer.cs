@@ -9,6 +9,8 @@ namespace Game.Core
         [SerializeField] float maxTime = 100f;
         [SerializeField] float addTimeOnKill = 0.5f;
         [SerializeField] CountDownUI countDownUI;
+        [SerializeField] AddTime addTimeUI;
+        [SerializeField] Vector3 addTimeOffset = new Vector3(0, 50f, 0);
         float currentTime = 0f;
         public static CountDownTimer instance;
 
@@ -40,6 +42,11 @@ namespace Game.Core
         {
             currentTime += addTime;
             // if (currentTime > maxTime) currentTime = maxTime;
+            AddTime instance = Instantiate(addTimeUI, Vector3.zero, Quaternion.identity);
+            instance.transform.SetParent(countDownUI.transform, false);
+
+
+            instance.Initiate(addTime);
         }
     }
 }
