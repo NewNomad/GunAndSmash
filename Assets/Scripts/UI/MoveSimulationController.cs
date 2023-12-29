@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Game.Control;
 using Game.Move;
 using UnityEngine;
@@ -7,7 +6,6 @@ public class SimulationController : MonoBehaviour
 {
     [SerializeField] int maxStep;
     [SerializeField] LineRenderer lineRenderer;
-    List<Vector3> renderLinePoints = new List<Vector3>();
     bool isPlayerMayMove = false;
     Vector2 moveVector = Vector2.zero;
 
