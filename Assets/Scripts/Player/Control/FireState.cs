@@ -1,6 +1,7 @@
 using Game.Combat;
 using Game.Core;
 using Game.Move;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 
 namespace Game.Control
@@ -28,6 +29,7 @@ namespace Game.Control
         {
             if (stamina.IsStaminaEmpty())
             {
+                SePlayer.Instance.Play("cancel_maou");
                 stateMachine.ChangeState(StateID.Idle);
                 return;
             }
