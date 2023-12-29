@@ -29,7 +29,7 @@ namespace Game.Core
         private float respawnTimer = 0f;
         private int totalKills = 0;
         CountDownTimer countDownTimer;
-        private bool IsRespawnControllerEnable = false;
+        [SerializeField] private bool IsRespawnControllerEnable = false;
         public bool EnableRespawnController { get => IsRespawnControllerEnable; set => IsRespawnControllerEnable = value; }
 
         private void Awake()
