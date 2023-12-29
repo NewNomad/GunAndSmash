@@ -5,6 +5,7 @@ using Game.Control;
 using Game.Core;
 using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
+using UnityEngine.Events;
 namespace Game.Core
 {
     public class RespawnController : MonoBehaviour
@@ -27,7 +28,11 @@ namespace Game.Core
         [SerializeField] float respawnEnemiesTime = 0.1f;
         List<GameObject> activeEnemies = new List<GameObject>();
         private float respawnTimer = 0f;
+        [SerializeField] int maxKills = 150;
+        public int MaxKills { get => maxKills; }
         private int totalKills = 0;
+        public int TotalKills { get => totalKills; }
+        public UnityEvent<int, int> onKillCountChanged;
         CountDownTimer countDownTimer;
         [SerializeField] private bool IsRespawnControllerEnable = false;
         public bool EnableRespawnController { get => IsRespawnControllerEnable; set => IsRespawnControllerEnable = value; }
@@ -79,10 +84,24 @@ namespace Game.Core
 
         void OnEnemyDead(GameObject enemy)
         {
+            handleTimerOnEnemyDead(enemy);
+            handleOnKillCountChanged(totalKills, maxKills);
+        }
+
+        void handleTimerOnEnemyDead(GameObject enemy)
+        {
             activeEnemies.Remove(enemy);
             totalKills++;
             const float addTime = 0.5f; // FIXME: マジックナンバー
             countDownTimer.AddTime(addTime);
+        }
+
+        void handleOnKillCountChanged(int totalKills, int maxKills)
+        {
+            if (onKillCountChanged != null)
+            {
+                onKillCountChanged.Invoke(totalKills, maxKills);
+            }
         }
 
         public Vector3 GetRespawnPoint()
@@ -139,6 +158,16 @@ namespace Game.Core
                 }
             }
             return null;
+        }
+
+        public void Reset()
+        {
+            foreach (GameObject enemy in activeEnemies)
+            {
+                Destroy(enemy);
+            }
+            activeEnemies.Clear();
+            totalKills = 0;
         }
     }
 }
