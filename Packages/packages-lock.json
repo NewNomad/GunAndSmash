@@ -1,5 +1,17 @@
 {
   "dependencies": {
+    "com.heurekagames.assethunterpro": {
+      "version": "file:com.heurekagames.assethunterpro",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.heurekagames.utils": {
+      "version": "file:com.heurekagames.utils",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.naichilab.easysoundplayer": {
       "version": "https://github.com/naichilab/unity-easy-sound-player.git?path=Assets/naichilab/EasySoundPlayer",
       "depth": 0,
