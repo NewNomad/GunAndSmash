@@ -46,7 +46,8 @@ namespace Game.Core
 
         private void Death()
         {
-            // TODO: 死亡時の処理
+            Instantiate(deathParticles, transform.localPosition, Quaternion.identity, transform);
+            Destroy(gameObject, deathParticles.main.duration - 0.1f);
         }
 
         // 無敵時の点滅

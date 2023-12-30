@@ -105,6 +105,7 @@ namespace Game.Control
         {
             stateMachine.ChangeState(StateID.Stop);
         }
+
         // TODO: EnhancedActionの実装
     }
 }
