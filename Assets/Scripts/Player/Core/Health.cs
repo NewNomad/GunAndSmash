@@ -74,5 +74,12 @@ namespace Game.Core
             health = Mathf.Min(health + healAmount, maxHealth);
             OnHealthChanged.Invoke(health, maxHealth);
         }
+
+        // TODO: 今回のために作った強制死亡装置
+        public void ForceDeath()
+        {
+            health = 0;
+            Death();
+        }
     }
 }
