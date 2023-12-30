@@ -67,9 +67,15 @@ namespace Game.Core
             return result;
         }
 
-
-        private void ConsumptionScore()
+        public void RestartGame()
         {
+            StartCoroutine(RestartGameCoroutine());
+        }
+
+        IEnumerator RestartGameCoroutine()
+        {
+            yield return new WaitForSecondsRealtime(0.5f);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
     }
 }
