@@ -15,6 +15,7 @@ namespace Game.Core
         public UnityEvent<int, int> OnHealthChanged;
         [SerializeField] ParticleSystem takeDamageParticles;
         [SerializeField] ParticleSystem deathParticles;
+        public UnityEvent onDeath;
 
         private void Awake()
         {
@@ -47,6 +48,7 @@ namespace Game.Core
         private void Death()
         {
             Instantiate(deathParticles, transform.localPosition, Quaternion.identity, transform);
+            onDeath.Invoke();
             Destroy(gameObject, deathParticles.main.duration - 0.1f);
         }
 
