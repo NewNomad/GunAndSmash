@@ -35,7 +35,7 @@ namespace Game.Core
         public UnityEvent<int, int> onKillCountChanged;
         CountDownTimer countDownTimer;
         [SerializeField] private bool IsRespawnControllerEnable = false;
-        public bool EnableRespawnController { get => IsRespawnControllerEnable; set => IsRespawnControllerEnable = value; }
+        public bool EnableRespawnController { get => IsRespawnControllerEnable; }
         public UnityEvent onKillAllEnemies;
 
         private void Awake()
@@ -174,6 +174,12 @@ namespace Game.Core
             }
             activeEnemies.Clear();
             totalKills = 0;
+        }
+
+        public void Initiate()
+        {
+            Reset();
+            IsRespawnControllerEnable = true;
         }
     }
 }

@@ -15,14 +15,14 @@ namespace Game.Core
 
         public void StartGame()
         {
-            respawnController.EnableRespawnController = true;
+            respawnController.Initiate();
             countDownTimer.Initiate();
         }
 
         public void EndGame()
         {
             respawnController.Reset();
-            respawnController.EnableRespawnController = false;
+            respawnController.Reset();
         }
 
 
