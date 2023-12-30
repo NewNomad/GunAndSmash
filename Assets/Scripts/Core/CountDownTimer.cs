@@ -1,6 +1,7 @@
 using Game.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 namespace Game.Core
 {
@@ -10,10 +11,12 @@ namespace Game.Core
         [SerializeField] float addTimeOnKill = 0.5f;
         [SerializeField] CountDownUI countDownUI;
         [SerializeField] AddTime addTimeUI;
-        [SerializeField] Vector3 addTimeOffset = new Vector3(0, 50f, 0);
         float currentTime = 0f;
         public static CountDownTimer instance;
+        [SerializeField] bool isTimerEnable = false;
+        public bool IsTimerEnable { get => isTimerEnable; }
 
+        public UnityEvent onTimerEnd;
         private void Awake()
         {
             if (instance == null)
@@ -30,10 +33,13 @@ namespace Game.Core
         }
         private void Update()
         {
+            if (!isTimerEnable) { return; }
             currentTime -= Time.deltaTime;
             if (currentTime < 0f)
             {
                 currentTime = 0f;
+                isTimerEnable = false;
+                onTimerEnd.Invoke();
             }
             countDownUI.CurrentTime = currentTime;
         }
@@ -48,5 +54,12 @@ namespace Game.Core
 
             instance.Initiate(addTime);
         }
+
+        public void Initiate()
+        {
+            isTimerEnable = true;
+            currentTime = maxTime;
+        }
+
     }
 }

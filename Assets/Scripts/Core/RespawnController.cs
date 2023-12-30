@@ -36,6 +36,7 @@ namespace Game.Core
         CountDownTimer countDownTimer;
         [SerializeField] private bool IsRespawnControllerEnable = false;
         public bool EnableRespawnController { get => IsRespawnControllerEnable; set => IsRespawnControllerEnable = value; }
+        public UnityEvent onKillAllEnemies;
 
         private void Awake()
         {
@@ -84,16 +85,21 @@ namespace Game.Core
 
         void OnEnemyDead(GameObject enemy)
         {
-            handleTimerOnEnemyDead(enemy);
+            handleOnEnemyDead(enemy);
             handleOnKillCountChanged(totalKills, maxKills);
         }
 
-        void handleTimerOnEnemyDead(GameObject enemy)
+        void handleOnEnemyDead(GameObject enemy)
         {
             activeEnemies.Remove(enemy);
             totalKills++;
             const float addTime = 0.5f; // FIXME: マジックナンバー
             countDownTimer.AddTime(addTime);
+
+            if (totalKills >= maxKills) // 全ての敵を倒した場合
+            {
+                onKillAllEnemies.Invoke();
+            }
         }
 
         void handleOnKillCountChanged(int totalKills, int maxKills)

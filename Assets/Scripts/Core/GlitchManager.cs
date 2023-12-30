@@ -1,4 +1,5 @@
 using System.Collections;
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 using UnityEngine.Rendering;
 using URPGlitch.Runtime.AnalogGlitch;
@@ -37,6 +38,7 @@ namespace Game.Core
 
         IEnumerator SetGlitchCoroutine(float time)
         {
+            SePlayer.Instance.Play("tutu2");
             analogGlitch.active = true;
             digitalGlitch.active = true;
             yield return new WaitForSeconds(time);
