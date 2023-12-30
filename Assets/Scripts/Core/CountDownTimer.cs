@@ -15,6 +15,7 @@ namespace Game.Core
         public static CountDownTimer instance;
         [SerializeField] bool isTimerEnable = false;
         public bool IsTimerEnable { get => isTimerEnable; }
+        public float CurrentTime { get => currentTime; }
 
         public UnityEvent onTimerEnd;
         private void Awake()
@@ -61,5 +62,9 @@ namespace Game.Core
             currentTime = maxTime;
         }
 
+        public void StopTimer()
+        {
+            isTimerEnable = false;
+        }
     }
 }

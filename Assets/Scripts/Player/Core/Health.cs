@@ -49,7 +49,7 @@ namespace Game.Core
         {
             Instantiate(deathParticles, transform.localPosition, Quaternion.identity, transform);
             onDeath.Invoke();
-            Destroy(gameObject, deathParticles.main.duration - 0.1f);
+            Destroy(gameObject, deathParticles.main.duration - 1f);
         }
 
         // 無敵時の点滅
@@ -78,6 +78,7 @@ namespace Game.Core
         // TODO: 今回のために作った強制死亡装置
         public void ForceDeath()
         {
+            if (health <= 0) return;
             health = 0;
             Death();
         }
