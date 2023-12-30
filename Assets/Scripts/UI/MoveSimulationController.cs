@@ -6,10 +6,10 @@ public class SimulationController : MonoBehaviour
 {
     [SerializeField] int maxStep;
     [SerializeField] LineRenderer lineRenderer;
-    [SerializeField] ParticleSystem OnClickPositionParticles;
-    ParticleSystem currentClickPositionParticles;
+    [SerializeField] LineRenderer OnClickPositionLineRenderer;
     bool isPlayerMayMove = false;
     Vector2 moveVector = Vector2.zero;
+    Vector2 mouseClickPosition = Vector2.zero;
 
     private void Start()
     {
@@ -19,7 +19,6 @@ public class SimulationController : MonoBehaviour
     {
         (isPlayerMayMove, moveVector) = PlayerController.instance.GetComponent<PlayerInputController>().GetIsPlayerMayMoveAndDirection();
         handlePredictionLine();
-        handleParticleOnClickPosition();
     }
 
     private void handlePredictionLine()
@@ -27,11 +26,15 @@ public class SimulationController : MonoBehaviour
         if (!isPlayerMayMove)
         {
             lineRenderer.enabled = false;
+            OnClickPositionLineRenderer.enabled = false;
+            mouseClickPosition = Vector2.zero;
             return;
         }
         lineRenderer.enabled = true;
+        OnClickPositionLineRenderer.enabled = true;
         print(isPlayerMayMove);
         DrawPredictionLine();
+        DrawOnClickPositionLineRenderer();
     }
 
     private void DrawPredictionLine()
@@ -53,30 +56,18 @@ public class SimulationController : MonoBehaviour
         }
     }
 
-    private void handleParticleOnClickPosition()
+    // 最初にクリックした場所から今のマウス位置までlineRendererを引く
+    private void DrawOnClickPositionLineRenderer()
     {
-        if (isPlayerMayMove)
+        if (mouseClickPosition == Vector2.zero)
         {
-            SetParticleOnClickPosition();
-            return;
+            mouseClickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-        DestroyParticleOnClickPosition();
+        OnClickPositionLineRenderer.transform.position = Vector3.zero;
+        OnClickPositionLineRenderer.positionCount = 2;
+        OnClickPositionLineRenderer.SetPosition(0, mouseClickPosition);
+        var currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        OnClickPositionLineRenderer.SetPosition(1, currentMousePosition);
     }
 
-    private void SetParticleOnClickPosition()
-    {
-        if (currentClickPositionParticles != null) return;
-        currentClickPositionParticles = Instantiate(OnClickPositionParticles, Vector3.zero, Quaternion.identity);
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
-        currentClickPositionParticles.transform.position = mousePosition;
-    }
-    private void DestroyParticleOnClickPosition()
-    {
-        print("destroy");
-        if (currentClickPositionParticles != null)
-        {
-            Destroy(currentClickPositionParticles.gameObject);
-        }
-    }
 }
