@@ -232,9 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b9b59f0b7c2ca419bc11c3307abfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireInterval: 0.5
-  FireCount: 3
-  BulletInterval: 50
+  FireInterval: 0.7
+  FireCount: 2
+  BulletInterval: 60
   BulletCount: 3
   bulletPrefab: {fileID: -876918792236209408, guid: cd31944301414ab42b28d49050007f91, type: 3}
   fireType: 0

@@ -233,8 +233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireInterval: 1
-  FireCount: 2
-  BulletInterval: 30
+  FireCount: 1
+  BulletInterval: 20
   BulletCount: 7
   bulletPrefab: {fileID: -876918792236209408, guid: cd31944301414ab42b28d49050007f91, type: 3}
   fireType: 0

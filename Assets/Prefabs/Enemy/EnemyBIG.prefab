@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b9b59f0b7c2ca419bc11c3307abfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireInterval: 0.7
+  FireInterval: 1
   FireCount: 5
   BulletInterval: 50
   BulletCount: 5

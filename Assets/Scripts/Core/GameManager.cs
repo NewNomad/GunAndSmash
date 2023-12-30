@@ -1,3 +1,4 @@
+using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
 namespace Game.Core
 {
@@ -15,12 +16,14 @@ namespace Game.Core
 
         public void StartGame()
         {
+            BgmPlayer.Instance.Play("bgm");
             respawnController.Initiate();
             countDownTimer.Initiate();
         }
 
         public void EndGame()
         {
+            BgmPlayer.Instance.Stop();
             respawnController.Reset();
             respawnController.Reset();
         }

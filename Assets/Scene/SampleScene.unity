@@ -5527,6 +5527,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   IsRespawnControllerEnable: 0
+  onKillAllEnemies:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1189926869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5543,7 +5546,10 @@ MonoBehaviour:
   addTimeOnKill: 0.5
   countDownUI: {fileID: 526217755}
   addTimeUI: {fileID: 7688623026832527643, guid: 81a3b5a9b615a3d4d9256bf181ca2e7e, type: 3}
-  addTimeOffset: {x: 0, y: 50, z: 0}
+  isTimerEnable: 0
+  onTimerEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1189926870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5939,7 +5945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4966136600610447303, guid: 906aee0b5431f428f862cd772c9c88d5, type: 3}
       propertyPath: BgmList.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4966136600610447303, guid: 906aee0b5431f428f862cd772c9c88d5, type: 3}
       propertyPath: BgmList.Array.data[0]

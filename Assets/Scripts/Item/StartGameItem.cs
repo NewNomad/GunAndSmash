@@ -31,13 +31,13 @@ public class StartGameItem : MonoBehaviour, IItem
         yield return new WaitForSecondsRealtime(0.8f);
         GlitchManager.instance.SetGlitch(2.5f);
         Time.timeScale = 1f;
-        yield return new WaitForSecondsRealtime(2.5f);
+        yield return new WaitForSecondsRealtime(2.3f);
         PlayerController.instance.transform.position = playerStartPoint.position;
         PlayerController.instance.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         Time.timeScale = 1f;
-        yield return new WaitForSecondsRealtime(2f);
-        gameStartEffect.Initiate();
         gameManager.StartGame();
+        yield return new WaitForSecondsRealtime(1f);
+        gameStartEffect.Initiate();
         isUsed = false;
     }
 }
