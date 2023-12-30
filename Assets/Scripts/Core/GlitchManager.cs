@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using URPGlitch.Runtime.AnalogGlitch;
 using URPGlitch.Runtime.DigitalGlitch;
 namespace Game.Core
@@ -7,8 +8,9 @@ namespace Game.Core
     public class GlitchManager : MonoBehaviour
     {
         public static GlitchManager instance { get; private set; }
-        [SerializeField] AnalogGlitchVolume analogGlitchFeature;
-        [SerializeField] DigitalGlitchVolume digitalGlitchFeature;
+        [SerializeField] Volume volume;
+        AnalogGlitchVolume analogGlitch;
+        DigitalGlitchVolume digitalGlitch;
 
         private void Awake()
         {
@@ -20,6 +22,8 @@ namespace Game.Core
             {
                 Destroy(gameObject);
             }
+            volume.profile.TryGet(out analogGlitch);
+            volume.profile.TryGet(out digitalGlitch);
         }
 
         void Start()
@@ -33,11 +37,11 @@ namespace Game.Core
 
         IEnumerator SetGlitchCoroutine(float time)
         {
-            analogGlitchFeature.active = true;
-            digitalGlitchFeature.active = true;
+            analogGlitch.active = true;
+            digitalGlitch.active = true;
             yield return new WaitForSeconds(time);
-            analogGlitchFeature.active = false;
-            digitalGlitchFeature.active = false;
+            analogGlitch.active = false;
+            digitalGlitch.active = false;
         }
     }
 }

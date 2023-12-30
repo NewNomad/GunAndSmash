@@ -5846,8 +5846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd160b7176fb8e49bdf788ae70097ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  analogGlitchFeature: {fileID: 0}
-  digitalGlitchFeature: {fileID: 0}
+  volume: {fileID: 461725339}
 --- !u!1001 &1250362143
 PrefabInstance:
   m_ObjectHideFlags: 0
