@@ -4,6 +4,7 @@ using Game.Control;
 using Michsky.MUIP;
 using naichilab.EasySoundPlayer.Scripts;
 using UnityEngine;
+using unityroom.Api;
 namespace Game.Core
 {
     public class GameManager : MonoBehaviour
@@ -13,6 +14,8 @@ namespace Game.Core
         [SerializeField] ModalWindowManager gameResultWindow;
 
         bool isGameStarted = false;
+
+        int score = 0;
         private void Start()
         {
             TryGetComponent(out respawnController);
@@ -58,7 +61,8 @@ namespace Game.Core
         private string GetGameResult()
         {
             int remainTime = int.Parse(countDownTimer.CurrentTime.ToString("F0"));
-            int score = respawnController.TotalKills * 100 + remainTime * 80;
+            score = respawnController.TotalKills * 100 + remainTime * 80;
+
             string result = "";
             result += "倒した敵の数: " + respawnController.TotalKills + "\n";
             result += "残り時間: " + remainTime + "\n";
@@ -76,6 +80,11 @@ namespace Game.Core
         {
             yield return new WaitForSecondsRealtime(0.5f);
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
+
+        public void UploadScore()
+        {
+            UnityroomApiClient.Instance.SendScore(1, score, ScoreboardWriteMode.HighScoreDesc);
         }
     }
 }
