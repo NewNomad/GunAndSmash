@@ -5514,7 +5514,13 @@ MonoBehaviour:
     requireKillCount: 60
   - enemyPrefab: {fileID: 241902066785523550, guid: f0b0f8c5f8d59cc47be725599c7c717d, type: 3}
     spawnProbability: 1
-    requireKillCount: 80
+    requireKillCount: 100
+  - enemyPrefab: {fileID: 241902066785523550, guid: 679a87f95dabcf740bafc24e990364ca, type: 3}
+    spawnProbability: 1
+    requireKillCount: 125
+  - enemyPrefab: {fileID: 241902066785523550, guid: 53b6efbc05484af4bbb9e4ea175da6b0, type: 3}
+    spawnProbability: 1
+    requireKillCount: 150
   maxEnemies: 15
   maxSpawnEnemiesCount: 3
   respawnInterval: 8
